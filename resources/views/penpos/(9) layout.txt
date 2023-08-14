@@ -1,0 +1,34 @@
+Ini hanyalah guide untuk pengerjaan site penpos
+
+-Font: Monstserrat Family
+-Color Palette: 
+    #7DC1E3 (Biru Langit)
+    #C3E2F6 (Biru Muda)
+    #2C56A7 (Biru Tua)
+    #58431F (Coklat)
+    #E53828 (Merah)
+    #E1AC61 (Coklat Muda)
+
+-Background: Gambar/#C3E2F6
+-Font Color: #000000 (Hitam)
+-Input:
+
+Penpos Penjualan
+1. Input Tim
+2. Input jumlah pembelian peserta pada produk tersebut
+3. Input Kota tujuan langsung 
+
+Penpos Distribusi
+1. Input Tim
+2. Input Barang yang mau dikirim
+3. Input Jalur Darat / Laut
+4. Input Jenis Transportasi
+5. Input Pengecekan Kapasitas Muatan / Input 
+6. Input Kota tujuan
+7. Input berapa kali kirim
+
+Penpos Hutang
+1. Input Tim
+2. Input pertanyaan benar (1-10)
+
+-Php Extension: yield, content, dkk
