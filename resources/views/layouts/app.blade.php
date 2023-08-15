@@ -23,7 +23,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        {{-- Navbar --}}
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -75,9 +76,10 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+        {{-- End Navbar --}}
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
