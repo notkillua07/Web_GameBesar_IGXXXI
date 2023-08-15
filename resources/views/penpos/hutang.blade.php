@@ -88,12 +88,8 @@
                     if (data[0].msg == "Success") {
                         alert('Hutang Berhasil!' + '\nTeam: ' + teamName +
                             "\nTotal Hutang: " + hutang);
-                        $("#team").val('-');
-                        $("#totalRight").val('');
                     } else {
                         alert(data[0].msg);
-                        $("#team").val('-');
-                        $("#totalRight").val('');
                     }
                 },
                 error: function(data) {
