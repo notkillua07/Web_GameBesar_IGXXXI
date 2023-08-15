@@ -10,9 +10,9 @@
 @section('content')
     <h1>Pos Hutang</h1>
     <div class="team-select-section">
-        Pilih Team <br>
-
         {{-- Pilih Tim --}}
+        <div class="form-outline mb-3">
+        <label class="form-label" for="team">Pilih Tim</label><br>
         <select name="team" id="team" class="select2 w-25 mb-3" onchange="loadGanti()"
             required>
             <option value="-" selected disabled>- Pilih Team -</option>
@@ -22,6 +22,7 @@
                 </option>
             @endfor
         </select>
+        </div>
 
         {{-- Input jawaban benar * 200 coin --}}
         <div class="form-outline mb-3">
