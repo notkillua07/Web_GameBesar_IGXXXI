@@ -17,6 +17,8 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('fulfill_demands');
+            $table->integer('debt');
+            $table->boolean('indebted')->default(false);
             $table->double('currency');
             $table->timestamps();
         });
