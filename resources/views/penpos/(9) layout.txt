@@ -1,4 +1,4 @@
-Ini hanyalah guide untuk pengerjaan site penpos
+Guide untuk pengerjaan site penpos
 
 -Font: Monstserrat Family
 -Color Palette: 

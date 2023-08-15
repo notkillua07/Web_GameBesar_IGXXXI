@@ -1,3 +1,4 @@
+{{-- Cuma buat jaga-jaga klo nanti user Ada Layout sendiri --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
