@@ -17,34 +17,20 @@ class HutangController extends Controller
 
     public function hutangTim(Request $request)
     {
-        // Pengecekan textbox
-        $validator = Validator::make($request->all(), [
-            'team_name' => 'required',
-            'hutang' => 'required'
-        ]);
-        // Klu gagal
-        if ($validator->fails()) {
-            $request->session()->flash('valid', 'false');
-            return view('penpos.hutang');
+        $teamName = $request['team_name'];
+        $team = Team::where('name', $teamName)->first();
+        $hutang = $request['hutang'];
+        $teamName = str_replace("+"," ",$teamName);
+        $msg = "";
+        if ($team->indebted == false) {
+            $team->currency += $hutang;
+            $team->debt = $hutang;
+            $team->indebted = true;
+            $team->save();
+            $msg = 'Success';
+        } else {
+            $msg = "Gagal, team sudah pernah hutang sebelumnya";
         }
-        //Klu berhasil
-        else {
-            $request->session()->flash('valid', 'true');
-            $teamName = request()->get('team_name');
-            $team = Team::where('name', $teamName)->first();
-            $hutang = $request->get('hutang');
-
-            if ($team->indebted == false) {
-                $team->currency += $hutang;
-                $team->debt = $hutang;
-                $team->indebted = true;
-                $team->save();
-                $msg = 'Success';
-            } else {
-                $msg = "Failed, team sudah pernah hutang sebelumnya";
-            }
-        }
-
         return response()->json(array([
             'msg' => $msg,
         ]), 200);

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('styles')
-
     {{--  Toaster Sweet Alert  --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -14,8 +13,8 @@
     <div class="team-select-section">
         {{-- Pilih Tim --}}
         <div class="form-outline mb-3">
-        <label class="form-label" for="team">Pilih Tim</label><br>
-        {{-- <select name="team" id="team" class="select2 w-25 mb-3" onchange="loadGanti()"
+            <label class="form-label" for="team">Pilih Tim</label><br>
+            {{-- <select name="team" id="team" class="select2 w-25 mb-3" onchange="loadGanti()"
             required>
             <option value="-" selected disabled>- Pilih Team -</option>
             @for ($i = 1; $i <= 7; $i++)
@@ -25,24 +24,25 @@
             @endfor
         </select>  --}}
 
-        <select name="team" id="team" class="select2 w-25 mb-3" required>
-            <option value="-" selected disabled>- Pilih Team -</option>
-            @foreach ($teams as $team)
-                <option value="{{ $team->name }}" id="{{ $team->name }}">
-                    {{ $team->name }}
-                </option>
-            @endforeach
-        </select>
+            <select name="team" id="team" class="select2 w-25 mb-3" required>
+                <option value="-" selected disabled>- Pilih Team -</option>
+                @foreach ($teams as $team)
+                    <option value="{{ $team->name }}" id="{{ $team->name }}">
+                        {{ $team->name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         {{-- Input jawaban benar * 200 coin --}}
         <div class="form-outline mb-3">
             <label class="form-label" for="totalRight">Jawaban Benar</label>
-            <input type="number" id="totalRight" class="form-control w-25" min="1" max="10" />
+            <input type="number" id="totalRight" class="form-control w-25" min="1" max="10" required>
         </div>
 
         {{-- Selesai Disubmit nanti keluar notif nambah koin berapa --}}
-        <button type="button" class="btn btn-primary" id="submit" onclick="inputHutang()" >Submit</button>
+        <button class="btn btn-primary" id="submit" onclick="inputHutang()">Submit</button>
+
     </div>
 @endsection
 
@@ -58,18 +58,6 @@
             }, 2000);
         });
 
-        const Toaster = Swal.mixin({
-            toast: true,
-            position: 'top-right',
-            iconColor: 'white',
-            customClass: {
-                popup: 'colored-toast'
-            },
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true
-        })
-
         $('#submit').click(function() {
             $('#submit').attr('disabled', 'disabled');
             $('#submit').addClass('btn-submit-disabled');
@@ -81,7 +69,7 @@
 
 
         const inputHutang = () => {
-            let teamName = $('#team').val();;
+            let teamName = $('#team').val();
 
             const hutang = $('#totalRight').val() * 200;
             console.log(teamName, hutang);
@@ -94,38 +82,22 @@
                     'hutang': hutang,
                 },
                 success: function(data) {
-                    console.log('Hutang Berhasil!' + '\nTeam: ' + teamName +
-                        "\nTotal Hutang: " + poin);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 500);
                     if (data[0].msg == "Success") {
-                        Toaster.fire({
-                            icon: 'success',
-                            animation: true,
-                            title: 'Hutang Berhasil!' + '\nTeam: ' + teamName +
-                                "\nTotal Hutang: " + hutang;
-                        });
-
-                        // $("#team").val('');
-                        $("#team").val('');
-
+                        alert('Hutang Berhasil!' + '\nTeam: ' + teamName +
+                            "\nTotal Hutang: " + hutang);
+                        $("#team").val('-');
                         $("#totalRight").val('');
                     } else {
-                        Toaster.fire({
-                            icon: 'error',
-                            animation: true,
-                            title: data[0].msg,
-                        });
-
-                        // $("#team").val('');
-                        $("#team").val('');
-
+                        alert(data[0].msg);
+                        $("#team").val('-');
                         $("#totalRight").val('');
                     }
-                    // setTimeout(function() {
-                    //     window.location.reload();
-                    // }, 7000);
                 },
                 error: function(data) {
-                    console.log(data);
+                    console.log(data[0].msg);
                     window.location.reload();
                 }
             });
