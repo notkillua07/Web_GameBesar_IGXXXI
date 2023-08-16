@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Agu 2023 pada 17.37
+-- Waktu pembuatan: 16 Agu 2023 pada 13.34
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -123,6 +123,39 @@ CREATE TABLE `items` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `items`
+--
+
+INSERT INTO `items` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'Mangga', 'Buah', NULL, NULL),
+(2, 'Nanas', 'Buah', NULL, NULL),
+(3, 'Pisang', 'Buah', NULL, NULL),
+(4, 'Seledri', 'Sayur', NULL, NULL),
+(5, 'Brokoli', 'Sayur', NULL, NULL),
+(6, 'Pakcoy', 'Sayur', NULL, NULL),
+(7, 'Beras', 'Biji', NULL, NULL),
+(8, 'Jagung', 'Biji', NULL, NULL),
+(9, 'Gandum', 'Biji', NULL, NULL),
+(10, 'Raspberry', 'Buah', NULL, NULL),
+(11, 'Blueberry', 'Buah', NULL, NULL),
+(12, 'Strawberry', 'Buah', NULL, NULL),
+(13, 'Cabai', 'Sayur', NULL, NULL),
+(14, 'Kembang Kol', 'Sayur', NULL, NULL),
+(15, 'Tomat', 'Sayur', NULL, NULL),
+(16, 'Kacang Tanah', 'Biji', NULL, NULL),
+(17, 'Kacang Merah', 'Biji', NULL, NULL),
+(18, 'Kacang Hijau', 'Biji', NULL, NULL),
+(19, 'Jeruk Bali', 'Buah', NULL, NULL),
+(20, 'Jeruk Lemon', 'Buah', NULL, NULL),
+(21, 'Jeruk Nipis', 'Buah', NULL, NULL),
+(22, 'Bayam', 'Sayur', NULL, NULL),
+(23, 'Kubis', 'Sayur', NULL, NULL),
+(24, 'Selada', 'Sayur', NULL, NULL),
+(25, 'Oatmeal', 'Biji', NULL, NULL),
+(26, 'Biji Chia', 'Biji', NULL, NULL),
+(27, 'Quinoa', 'Biji', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -222,6 +255,15 @@ CREATE TABLE `suppliers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `city`, `created_at`, `updated_at`) VALUES
+(1, 'Surabaya', NULL, NULL),
+(2, 'Semarang', NULL, NULL),
+(3, 'Bandung', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -402,7 +444,7 @@ ALTER TABLE `inventories`
 -- AUTO_INCREMENT untuk tabel `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -432,7 +474,7 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT untuk tabel `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `teams`
