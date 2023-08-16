@@ -97,7 +97,7 @@
             console.log(city);
             $.ajax({
                 type: 'POST',
-                // url: '{{ route('penpos.getCity') }}',
+                url: '{{ route('penpos.getCity') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'city': city,
