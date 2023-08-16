@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->enum('type',['Buah','Sayur','Biji']);
+            $table->enum('city',['Surabaya','Semarang','Bandung']);
             $table->timestamps();
         });
     }
