@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>IGXXXI - Penpos Penjualan</title>
+    <title>IGXXXI - Penpos Pembelian</title>
     @section('styles')
     @endsection
 </head>
@@ -11,7 +11,7 @@
 @section('content')
     <div class="card m-auto mt-5 shadow-sm" style="height:35em;width:30em;">
         <h1 class="card-header text-center" style="font-weight:bold;background-color:#E1AC61;color:#58431F;"><i
-                class="bi bi-cart4"></i></i> Pos Penjualan</h1>
+                class="bi bi-cart4"></i></i> Pos Pembelian</h1>
         <div class="card-body">
             <div class="team-select-section">
 
@@ -97,7 +97,7 @@
             console.log(city);
             $.ajax({
                 type: 'POST',
-                // url: '{{ route('penpos.getCity') }}',
+                url: '{{ route('penpos.getCity') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'city': city,
