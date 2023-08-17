@@ -29,4 +29,13 @@ class PembelianController extends Controller
         $cities = Supplier::all();
         return view('penpos.pembelian', compact('teams', 'items', 'cities'));
     }
+
+    public function getCitySupply(Request $request)
+    {
+        $city = $request->city;
+        $items = Item::where('city',$city)->get();  
+        return response()->json(array(
+            'items' => $items
+        ), 200);
+    }
 }

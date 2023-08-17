@@ -44,7 +44,7 @@
                 {{-- Pilih Barang --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih Barang</label><br>
-                    <select name="barang" id="barang" class="select2 w-25 mb-3" onchange="loadGanti()" required>
+                    <select name="barang" id="barang" class="select2 w-25 mb-3" required>
                         <option value="-" selected disabled>- Pilih Barang -</option>
                         @foreach ($items as $group => $item)
                             <optgroup label="{{ $group }}">
@@ -63,7 +63,7 @@
                 </div>
 
                 {{-- Selesai Disubmit nanti keluar notif nambah koin berapa --}}
-                <button type="button" class="btn btn-primary">Konfirmasi</button>
+                <button type="button" class="btn btn-primary" id="submit">Konfirmasi</button>
 
             </div>
         </div>
@@ -94,28 +94,41 @@
 
         const getCitySupply = () => {
             let city = $('#kotaTujuan').val();
+            $('#barang').html("<option value = '-' disabled selected>- Pilih Barang -</option>")
             console.log(city);
             $.ajax({
                 type: 'POST',
-                url: '{{ route('penpos.getCity') }}',
+                url: '{{ route('pembelian.getCity') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'city': city,
                 },
                 success: function(data) {
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 500);
-                    if (data[0].msg == "Success") {
-                        alert('Hutang Berhasil!' + '\nTeam: ' + teamName +
-                            "\nTotal Hutang: " + hutang);
-                    } else {
-                        alert(data[0].msg);
+                    console.log(data.items);
+                    for (let i = 1; i < 4; i++) {
+                        // Create a new option group element
+                        let j = 0
+                        if (i == 1) {
+                            var optionGroup = $('<optgroup label="Buah"></optgroup>');
+                            j = 0;
+                        } else if (i == 2) {
+                            var optionGroup = $('<optgroup label="Sayur"></optgroup>');
+                            j = 3;
+                        } else if (i == 3) {
+                            var optionGroup = $('<optgroup label="Biji-bijian"></optgroup>');
+                            j = 6;
+                        }
+                        for (let k = j; k < (j + 3); k++) {
+                            var option = `<option value="${data.items[k].name}">${data.items[k].name}</option>`;
+                            // Append the option group to the combobox
+                            optionGroup.append(option);
+                        }
+                        $('#barang').append(optionGroup);
                     }
+
                 },
                 error: function(data) {
-                    console.log(data[0].msg);
-                    window.location.reload();
+                    //window.location.reload();
                 }
             });
         }
