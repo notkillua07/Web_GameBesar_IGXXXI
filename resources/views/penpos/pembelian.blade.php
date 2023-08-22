@@ -18,7 +18,7 @@
                 {{-- Pilih Tim --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                    <select name="team" id="team" class="select2 w-25 mb-3" onchange="loadGanti()">
+                    <select name="team" id="team" class="form-select select2 mb-3" onchange="loadGanti()">
                         <option value="-" selected disabled>- Pilih Team -</option>
                         @foreach ($teams as $team)
                             <option value="{{ $team->name }}" id="{{ $team->name }}">
@@ -28,10 +28,11 @@
                     </select>
                 </div>
 
+
                 {{-- Pilih Kota Tujuan --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Tujuan</label><br>
-                    <select name="kotaTujuan" id="kotaTujuan" class="select2 w-25 mb-3" onchange="getCitySupply()" required>
+                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getCitySupply()" required>
                         <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
                         @foreach ($cities as $city)
                             <option value="{{ $city->city }}" id="{{ $city->city }}">
@@ -44,7 +45,7 @@
                 {{-- Pilih Barang --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih Barang</label><br>
-                    <select name="barang" id="barang" class="select2 w-25 mb-3" required>
+                    <select name="barang" id="barang" class="form-select select2 mb-3" required>
                         <option value="-" selected disabled>- Pilih Barang -</option>
                         @foreach ($items as $group => $item)
                             <optgroup label="{{ $group }}">
@@ -62,9 +63,11 @@
                     <input type="number" id="typeNumber" class="form-control w-25" min="1" max="999" />
                 </div>
 
-                {{-- Selesai Disubmit nanti keluar notif nambah koin berapa --}}
-                <button type="button" class="btn btn-primary" id="submit">Konfirmasi</button>
-
+                {{-- Button Submit --}}
+                <div class="form-outline">
+                    <button type="button" class="btn btn-primary" id="submit">Konfirmasi</button>
+                </div>
+            
             </div>
         </div>
     </div>
@@ -119,7 +122,8 @@
                             j = 6;
                         }
                         for (let k = j; k < (j + 3); k++) {
-                            var option = `<option value="${data.items[k].name}">${data.items[k].name}</option>`;
+                            var option =
+                                `<option value="${data.items[k].name}">${data.items[k].name}</option>`;
                             // Append the option group to the combobox
                             optionGroup.append(option);
                         }

@@ -16,7 +16,7 @@
 
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                    <select name="team" id="team" class="select2 w-25" required>
+                    <select name="team" id="team" class="form-select select2" required>
                         <option value="-" selected disabled>- Pilih Team -</option>
                         @foreach ($teams as $team)
                             <option value="{{ $team->name }}" id="{{ $team->name }}">
@@ -37,7 +37,7 @@
             </div>
 
             {{-- Tombol Submit --}}
-            <button class="btn btn-primary" id="submit" onclick="inputHutang()">Pinjam</button>
+            <button class="btn btn-primary" id="submit" onclick="inputHutang()"><i class="bi bi-cash-coin"></i> Pinjam</button>
         </div>
     </div>
 @endsection
