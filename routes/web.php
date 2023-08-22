@@ -29,4 +29,5 @@ Route::post('/penpos-hutang', [\App\Http\Controllers\HutangController::class, 'h
 Route::get('/pembelian', [App\Http\Controllers\PembelianController::class, 'index'])->name('pembelian');
 Route::post('/pembelian-get', [App\Http\Controllers\PembelianController::class, 'getCitySupply'])->name('pembelian.getCity');
 Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
+Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
 Route::get('/distribusi', [App\Http\Controllers\DistribusiController::class, 'index'])->name('distribusi');
