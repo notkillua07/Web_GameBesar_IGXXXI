@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Agu 2023 pada 13.34
+-- Waktu pembuatan: 25 Agu 2023 pada 07.44
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -109,6 +109,13 @@ CREATE TABLE `inventories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `inventories`
+--
+
+INSERT INTO `inventories` (`id`, `team_id`, `item_id`, `amount`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -120,41 +127,42 @@ CREATE TABLE `items` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` enum('Buah','Sayur','Biji') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `city` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'Mangga', 'Buah', NULL, NULL),
-(2, 'Nanas', 'Buah', NULL, NULL),
-(3, 'Pisang', 'Buah', NULL, NULL),
-(4, 'Seledri', 'Sayur', NULL, NULL),
-(5, 'Brokoli', 'Sayur', NULL, NULL),
-(6, 'Pakcoy', 'Sayur', NULL, NULL),
-(7, 'Beras', 'Biji', NULL, NULL),
-(8, 'Jagung', 'Biji', NULL, NULL),
-(9, 'Gandum', 'Biji', NULL, NULL),
-(10, 'Raspberry', 'Buah', NULL, NULL),
-(11, 'Blueberry', 'Buah', NULL, NULL),
-(12, 'Strawberry', 'Buah', NULL, NULL),
-(13, 'Cabai', 'Sayur', NULL, NULL),
-(14, 'Kembang Kol', 'Sayur', NULL, NULL),
-(15, 'Tomat', 'Sayur', NULL, NULL),
-(16, 'Kacang Tanah', 'Biji', NULL, NULL),
-(17, 'Kacang Merah', 'Biji', NULL, NULL),
-(18, 'Kacang Hijau', 'Biji', NULL, NULL),
-(19, 'Jeruk Bali', 'Buah', NULL, NULL),
-(20, 'Jeruk Lemon', 'Buah', NULL, NULL),
-(21, 'Jeruk Nipis', 'Buah', NULL, NULL),
-(22, 'Bayam', 'Sayur', NULL, NULL),
-(23, 'Kubis', 'Sayur', NULL, NULL),
-(24, 'Selada', 'Sayur', NULL, NULL),
-(25, 'Oatmeal', 'Biji', NULL, NULL),
-(26, 'Biji Chia', 'Biji', NULL, NULL),
-(27, 'Quinoa', 'Biji', NULL, NULL);
+INSERT INTO `items` (`id`, `name`, `type`, `created_at`, `updated_at`, `city`) VALUES
+(1, 'Mangga', 'Buah', NULL, NULL, 'Surabaya'),
+(2, 'Nanas', 'Buah', NULL, NULL, 'Surabaya'),
+(3, 'Pisang', 'Buah', NULL, NULL, 'Surabaya'),
+(4, 'Seledri', 'Sayur', NULL, NULL, 'Surabaya'),
+(5, 'Brokoli', 'Sayur', NULL, NULL, 'Surabaya'),
+(6, 'Pakcoy', 'Sayur', NULL, NULL, 'Surabaya'),
+(7, 'Beras', 'Biji', NULL, NULL, 'Surabaya'),
+(8, 'Jagung', 'Biji', NULL, NULL, 'Surabaya'),
+(9, 'Gandum', 'Biji', NULL, NULL, 'Surabaya'),
+(10, 'Raspberry', 'Buah', NULL, NULL, 'Semarang'),
+(11, 'Blueberry', 'Buah', NULL, NULL, 'Semarang'),
+(12, 'Strawberry', 'Buah', NULL, NULL, 'Semarang'),
+(13, 'Cabai', 'Sayur', NULL, NULL, 'Semarang'),
+(14, 'Kembang Kol', 'Sayur', NULL, NULL, 'Semarang'),
+(15, 'Tomat', 'Sayur', NULL, NULL, 'Semarang'),
+(16, 'Kacang Tanah', 'Biji', NULL, NULL, 'Semarang'),
+(17, 'Kacang Merah', 'Biji', NULL, NULL, 'Semarang'),
+(18, 'Kacang Hijau', 'Biji', NULL, NULL, 'Semarang'),
+(19, 'Jeruk Bali', 'Buah', NULL, NULL, 'Bandung'),
+(20, 'Jeruk Lemon', 'Buah', NULL, NULL, 'Bandung'),
+(21, 'Jeruk Nipis', 'Buah', NULL, NULL, 'Bandung'),
+(22, 'Bayam', 'Sayur', NULL, NULL, 'Bandung'),
+(23, 'Kubis', 'Sayur', NULL, NULL, 'Bandung'),
+(24, 'Selada', 'Sayur', NULL, NULL, 'Bandung'),
+(25, 'Oatmeal', 'Biji', NULL, NULL, 'Bandung'),
+(26, 'Biji Chia', 'Biji', NULL, NULL, 'Bandung'),
+(27, 'Quinoa', 'Biji', NULL, NULL, 'Bandung');
 
 -- --------------------------------------------------------
 
@@ -216,6 +224,13 @@ CREATE TABLE `sells` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `sells`
+--
+
+INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `month`, `stocks`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 100, 1, 3599, NULL, '2023-08-24 18:19:38');
+
 -- --------------------------------------------------------
 
 --
@@ -239,9 +254,17 @@ CREATE TABLE `sell_transactions` (
 
 CREATE TABLE `sessions` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `month` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `month`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,7 +310,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(1, 'Tim 1', 0, 600, 1, 1200, '2023-08-15 08:14:39', '2023-08-15 02:57:56');
+(1, 'Tim 1', 1, 600, 1, 1100, '2023-08-15 08:14:39', '2023-08-15 02:57:56');
 
 -- --------------------------------------------------------
 
@@ -304,6 +327,16 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Penpos Pembelian', 'pembelian', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(2, 'Penpos Penjualan', 'penjualan', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(3, 'Penpos Distribusi', 'distribusi', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 2, NULL, NULL),
+(4, 'Penpos Hutang', 'hutang', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 3, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -438,7 +471,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `items`
@@ -456,7 +489,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `sells`
 --
 ALTER TABLE `sells`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `sell_transactions`
@@ -468,7 +501,7 @@ ALTER TABLE `sell_transactions`
 -- AUTO_INCREMENT untuk tabel `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `suppliers`
@@ -486,7 +519,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
