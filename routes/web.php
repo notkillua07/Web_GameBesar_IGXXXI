@@ -14,22 +14,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(
+    ['middleware' => ['guest']],
+    function () {
+        Route::get('/', function () {
+            return view('auth.login');
+        });
+    }
 
-Auth::routes();
+);
 
-Route::get('/hutang', [App\Http\Controllers\HutangController::class, 'index'])->name('hutang');
-Route::post('/penpos-hutang', [\App\Http\Controllers\HutangController::class, 'hutangTim'])->name('penpos.hutang');
-Route::get('/pembelian', [App\Http\Controllers\PembelianController::class, 'index'])->name('pembelian');
-Route::post('/pembelian-getCur', [App\Http\Controllers\PembelianController::class, 'getCurrency'])->name('pembelian.getCurr');
-Route::post('/pembelian-get', [App\Http\Controllers\PembelianController::class, 'getCitySupply'])->name('pembelian.getCity');
-Route::post('/pembelian-buy', [App\Http\Controllers\PembelianController::class, 'buySupply'])->name('pembelian.buySup');
-Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
-Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
-Route::get('/distribusi', [App\Http\Controllers\DistribusiController::class, 'index'])->name('distribusi');
+
+Route::group(
+    ['middleware' => ['auth', 'penjualan']],
+    function () {
+        // Penjualan
+        Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
+        Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
+    }
+);
+
+Route::group(
+    ['middleware' => ['auth', 'pembelian']],
+    function () {
+        // Pembelian
+        Route::get('/pembelian', [App\Http\Controllers\PembelianController::class, 'index'])->name('pembelian');
+        Route::post('/pembelian-getCur', [App\Http\Controllers\PembelianController::class, 'getCurrency'])->name('pembelian.getCurr');
+        Route::post('/pembelian-get', [App\Http\Controllers\PembelianController::class, 'getCitySupply'])->name('pembelian.getCity');
+        Route::post('/pembelian-buy', [App\Http\Controllers\PembelianController::class, 'buySupply'])->name('pembelian.buySup');
+    }
+);
+
+Route::group(
+    ['middleware' => ['auth', 'distribusi']],
+    function () {
+        // Distribusi
+        Route::get('/distribusi', [App\Http\Controllers\DistribusiController::class, 'index'])->name('distribusi');
+    }
+);
+
+Route::group(
+    ['middleware' => ['auth', 'hutang']],
+    function () {
+        Route::get('/hutang', [App\Http\Controllers\HutangController::class, 'index'])->name('hutang');
+        Route::post('/penpos-hutang', [\App\Http\Controllers\HutangController::class, 'hutangTim'])->name('penpos.hutang');
+    }
+);

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    public $timestam
     use HasFactory;
 
     public function inventory(){

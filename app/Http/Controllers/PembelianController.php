@@ -69,8 +69,9 @@ class PembelianController extends Controller
             if ($teamCurr >= $price) {
                 $sell->stocks -= $amount;
                 $team->currency -= $price;
+                $team->fulfill_demands += $amount;
                 DB::table('inventories')->insert([
-                    'team_id' => $team,
+                    'team_id' => $team->id,
                     'item_id' => $item->id,
                     'amount' => $amount,
                 ]);
