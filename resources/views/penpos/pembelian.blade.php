@@ -17,8 +17,8 @@
 
                 {{-- Pilih Tim --}}
                 <div class="form-outline mb-3">
-                    <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                    <select name="team" id="team" class="form-select select2 mb-3" onchange="loadGanti()">
+                    <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><p>Currency: <span id="currency"></span></p>
+                    <select name="team" id="team" class="form-select select2 mb-3" onchange="changeTeam()">
                         <option value="-" selected disabled>- Pilih Team -</option>
                         @foreach ($teams as $team)
                             <option value="{{ $team->name }}" id="{{ $team->name }}">
@@ -32,7 +32,8 @@
                 {{-- Pilih Kota Tujuan --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Tujuan</label><br>
-                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getCitySupply()" required>
+                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getCitySupply()"
+                        required>
                         <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
                         @foreach ($cities as $city)
                             <option value="{{ $city->city }}" id="{{ $city->city }}">
@@ -60,14 +61,14 @@
                 {{-- Input Jumlah Objek --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Kuantitas</label>
-                    <input type="number" id="typeNumber" class="form-control w-25" min="1" max="999" />
+                    <input type="number" id="amount" class="form-control w-25" min="1" max="999" />
                 </div>
 
                 {{-- Button Submit --}}
                 <div class="form-outline">
-                    <button type="button" class="btn btn-primary" id="submit">Konfirmasi</button>
+                    <button type="button" class="btn btn-primary" id="submit" onclick="buySupply()">Konfirmasi</button>
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -94,6 +95,23 @@
             }, 2000);
         });
 
+        const changeTeam = () => {
+            let teamName = $('#team').val();
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('pembelian.getCurr') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'teamName': teamName,
+                },
+                success: function(data) {
+                    $('#currency').text(data.team.currency);
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
 
         const getCitySupply = () => {
             let city = $('#kotaTujuan').val();
@@ -123,16 +141,40 @@
                         }
                         for (let k = j; k < (j + 3); k++) {
                             var option =
-                                `<option value="${data.items[k].name}">${data.items[k].name}</option>`;
+                                `<option value="${data.items[k].id}">${data.items[k].name}</option>`;
                             // Append the option group to the combobox
                             optionGroup.append(option);
                         }
                         $('#barang').append(optionGroup);
                     }
-
                 },
                 error: function(data) {
                     window.location.reload();
+                }
+            });
+        }
+        const buySupply = () => {
+            let teamName = $('#team').val();
+            let itemName = $('#barang').val();
+            let city = $('#kotaTujuan').val();
+            let amount = $('#amount').val();
+            console.log(teamName, itemName, city, amount);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('pembelian.buySup') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'teamName': teamName,
+                    'itemName': itemName,
+                    'city': city,
+                    'amount': amount,
+                },
+                success: function(data) {
+                    console.log(data.msg)
+                    alert(data.msg);
+                },
+                error: function(data) {
+                    // window.location.reload();
                 }
             });
         }

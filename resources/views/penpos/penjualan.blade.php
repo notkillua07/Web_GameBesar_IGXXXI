@@ -31,7 +31,8 @@
                 {{-- Pilih Kota Tujuan --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Tujuan</label><br>
-                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getCitySupply()" required>
+                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getTeamInv()"
+                        required>
                         <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
                         @foreach ($cities as $city)
                             <option value="{{ $city->city }}" id="{{ $city->city }}">
@@ -44,15 +45,8 @@
                 {{-- Pilih Barang --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih Barang</label><br>
-                    <select name="barang" id="barang" class="form-select select2 mb-3" onchange="loadGanti()" required>
+                    <select name="barang" id="barang" class="form-select select2 mb-3" required>
                         <option value="-" selected disabled>- Pilih Barang -</option>
-                        @foreach ($items as $group => $item)
-                            <optgroup label="{{ $group }}">
-                                @foreach ($item as $it)
-                                    <option value="{{ $it->name }}">{{ $it->name }}</option>
-                                @endforeach
-                            </optgroup>
-                        @endforeach
                     </select>
                 </div>
 
@@ -92,7 +86,7 @@
         });
 
 
-        const getCitySupply = () => {
+        const getTeamInv = () => {
             let teamName = $('#team').val();
             let city = $('#kotaTujuan').val();
             $('#barang').html("<option value = '-' disabled selected>- Pilih Barang -</option>")
@@ -106,28 +100,14 @@
                     'teamName': teamName,
                 },
                 success: function(data) {
-                    console.log(data.items);
-                    for (let i = 1; i < 4; i++) {
+                    console.log(data.amounts, data.names);
+                    for (let i = 0; i < data.amounts.length; i++) {
                         // Create a new option group element
-                        let j = 0
-                        if (i == 1) {
-                            var optionGroup = $('<optgroup label="Buah"></optgroup>');
-                            j = 0;
-                        } else if (i == 2) {
-                            var optionGroup = $('<optgroup label="Sayur"></optgroup>');
-                            j = 3;
-                        } else if (i == 3) {
-                            var optionGroup = $('<optgroup label="Biji-bijian"></optgroup>');
-                            j = 6;
-                        }
-                        for (let k = j; k < (j + 3); k++) {
-                            var option = `<option value="${data.items[k].name}">${data.items[k].name}</option>`;
-                            // Append the option group to the combobox
-                            optionGroup.append(option);
-                        }
-                        $('#barang').append(optionGroup);
+                        var option =
+                            `<option value="${data.names[i].id}">${data.names[i].name} [${data.amounts[i].amount}]</option>`;
+                        // Append the option group to the combobox
+                        $('#barang').append(option);
                     }
-
                 },
                 error: function(data) {
                     window.location.reload();

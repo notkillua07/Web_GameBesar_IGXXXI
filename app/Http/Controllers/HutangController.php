@@ -18,9 +18,10 @@ class HutangController extends Controller
     public function hutangTim(Request $request)
     {
         $teamName = $request['team_name'];
+        $teamName = str_replace("+", " ", $teamName);
         $team = Team::where('name', $teamName)->first();
         $hutang = $request['hutang'];
-        $teamName = str_replace("+"," ",$teamName);
+
         $msg = "";
         if ($team->indebted == false) {
             $team->currency += $hutang;

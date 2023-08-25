@@ -34,8 +34,9 @@ class PenjualanController extends Controller
     {
         $city = $request->city;
         $teamName = $request->teamName;
+        $teamName = str_replace("+"," ",$teamName);
         $team = Team::where('name', $teamName)->first();
-        $teamInv = Inventory::where('team_id',$team)->get();
+        $teamInv = Inventory::where('team_id',$team->id)->get();
         $items = Item::where('city',$city)->get();
         $invAmount = [];
         $invName = [];
