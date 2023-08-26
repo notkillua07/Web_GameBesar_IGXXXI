@@ -75,6 +75,11 @@ class PembelianController extends Controller
                     'item_id' => $item->id,
                     'amount' => $amount,
                 ]);
+                DB::table('sell_transactions')->insert([
+                    'team_id' => $team->id,
+                    'item_id' => $item->id,
+                    'amount' => $amount,
+                ]);
                 $sell->save();
                 $team->save();
                 $msg = "Successfully bought!";

@@ -23,41 +23,37 @@
                     {{-- Pilih Tim --}}
                     <div class="col-md-6">
                         <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                        <select name="team" id="team" class="form-select select2 mb-3" onchange="loadGanti()"
-                            required>
+                        <select name="team" id="team" class="form-select select2" onchange="getTeamInv()" required>
                             <option value="-" selected disabled>- Pilih Team -</option>
-                            @for ($i = 1; $i <= 7; $i++)
-                                <option value="{{ $i }}" id="{{ $i }}">
-                                    {{ 'Tim ' . $i }}
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->name }}" id="{{ $team->name }}">
+                                    {{ $team->name }}
                                 </option>
-                            @endfor
+                            @endforeach
                         </select>
                     </div>
 
                     {{-- Pilih Barang --}}
                     <div class="col-md-6">
-                        <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih Barang</label><br>
-                        <select name="barang" id="barang" class="form-select select2 mb-3" onchange="loadGanti()"
+                        <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih
+                            Barang</label><br>
+                        <select name="barang" id="barang" class="form-select select2 mb-3" onchange=""
                             required>
                             <option value="-" selected disabled>- Pilih Barang -</option>
-                            @for ($i = 1; $i <= 7; $i++)
-                                <option value="{{ $i }}" id="{{ $i }}">
-                                    {{ 'Barang ' . $i }}
-                                </option>
-                            @endfor
                         </select>
                     </div>
 
                     {{-- Pilih Jalur --}}
                     <div class="col-md-6">
-                        <label class="form-label" for="team"><i class="bi bi-signpost-split-fill"></i> Pilih Jalur </label><br>
-                        <select name="jalur" id="jalur" class="form-select select2 mb-3" onchange="loadGanti()"
+                        <label class="form-label" for="team"><i class="bi bi-signpost-split-fill"></i> Pilih Jalur
+                        </label><br>
+                        <select name="jalur" id="jalur" class="form-select select2 mb-3" onchange="getTransport()"
                             required>
                             <option value="-" selected disabled>- Pilih Jalur -</option>
-                            <option value="jalur" id="darat">
+                            <option value="Darat" id="darat">
                                 Jalur Darat
                             </option>
-                            <option value="jalur" id="laut">
+                            <option value="Laut" id="laut">
                                 Jalur Laut
                             </option>
                         </select>
@@ -65,15 +61,10 @@
 
                     {{-- Pilih Jenis Transportasi --}}
                     <div class="col-md-6">
-                        <label class="form-label" for="team"><i class="bi bi-globe"></i> Jenis Transportasi</label><br>
-                        <select name="jenisTransport" id="jenisTransport" class="form-select select2 mb-3"
-                            onchange="loadGanti()" required>
-                            <option value="-" selected disabled>- Pilih Jenis Transportasi -</option>
-                            @for ($i = 1; $i <= 7; $i++)
-                                <option value="{{ $i }}" id="{{ $i }}">
-                                    {{ 'Transportasi ' . $i }}
-                                </option>
-                            @endfor
+                        <label class="form-label" for="team"><i class="bi bi-globe"></i> Jenis Jasa Transportasi</label><br>
+                        <select name="jenisJasa" id="jenisJasa" class="form-select select2 mb-3" onchange=""
+                            required>
+                            <option value="-" selected disabled>- Pilih Jenis Jasa -</option>
                         </select>
                     </div>
             </div>
@@ -88,22 +79,23 @@
 
             {{-- Button Pengecekan Muatan --}}
             <div class="col-12">
-                <button type="button" class="btn btn-primary" id="btnCekMuatan"><i class="bi bi-search"></i> Cek Muatan</button>
+                <button type="button" class="btn btn-primary" id="btnCekMuatan"><i class="bi bi-search"></i> Cek
+                    Muatan</button>
 
                 <script></script>
             </div>
             {{-- Pilih Kota Tujuan --}}
             <div class="col-12">
                 <div class="form-outline mb-3 mt-3">
-                    <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Tujuan</label><br>
-                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="loadGanti()"
+                    <label class="form-label" for="kotaTujuan"><i class="bi bi-building"></i> Kota Tujuan</label><br>
+                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getTeamInv()"
                         required>
                         <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
-                        @for ($i = 1; $i <= 3; $i++)
-                            <option value="{{ $i }}" id="{{ $i }}">
-                                {{ 'Kota ' . $i }}
+                        @foreach ($cities as $city)
+                            <option value="{{ $city->id }}" id="{{ $city->id }}">
+                                {{ $city->city }}
                             </option>
-                        @endfor
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -112,7 +104,8 @@
                 {{-- Input Berapa Kali Kirim --}}
                 <div class="col">
                     <div class="form-outline mb-3">
-                        <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Frekuensi Pengiriman</label>
+                        <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Frekuensi
+                            Pengiriman</label>
                         <input type="number" id="typeNumber" class="form-control w-25" min="1" max="10" />
                     </div>
 
@@ -122,6 +115,90 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2();
+
+            window.setTimeout(function() {
+                $(".alert-danger").fadeTo(1000, 0).slideUp(800, function() {
+                    $(this).remove();
+                });
+            }, 2000);
+        });
+
+        $('#submit').click(function() {
+            $('#submit').attr('disabled', 'disabled');
+            $('#submit').addClass('btn-submit-disabled');
+            setTimeout(function() {
+                $('#submit').removeAttr('disabled');
+                $('#submit').removeClass('btn-submit-disabled');
+            }, 2000);
+        });
+
+        const getTeamInv = () => {
+            let teamName = $('#team').val();
+            let city = $('#kotaTujuan').val();
+            $('#barang').html("<option value = '-' disabled selected>- Pilih Barang -</option>")
+            console.log(city);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('distribusi.getInv') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'city': city,
+                    'teamName': teamName,
+                },
+                success: function(data) {
+                    console.log(data.amounts, data.names);
+                    for (let i = 0; i < data.amounts.length; i++) {
+                        // Create a new option group element
+                        var option =
+                            `<option value="${data.names[i].id}">${data.names[i].name} [${data.amounts[i].amount}]</option>`;
+                        // Append the option group to the combobox
+                        $('#barang').append(option);
+                    }
+                    alert(data.msg);
+                },
+                error: function(data) {
+                    //window.location.reload();
+                }
+            });
+        }
+
+        const getTransport = () => {
+            let jalur = $('#jalur').val();
+            let city = $('#kotaTujuan').val();
+            $('#jenisJasa').html("<option value = '-' disabled selected>- Pilih Jasa -</option>")
+            console.log(jalur, city);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('distribusi.getTrans') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'jalur': jalur,
+                    'city': city,
+                },
+                success: function(data) {
+                    console.log(data.expeditions)
+                    for (let i = 0; i < data.expeditions.length; i++) {
+                        // Create a new option group element
+                        let minute = Math.floor(data.expeditions[i].time_taken / 60);
+                        let seconds = data.expeditions[i].time_taken % 60;
+                        var option =
+                            `<option value="${data.expeditions[i].id}">${data.expeditions[i].name} [Cap:${data.expeditions[i].capacity} Ton, Cost:${data.expeditions[i].cost}/100km, Time: ${minute}:${seconds}]</option>`;
+                        // Append the option group to the combobox
+                        $('#jenisJasa').append(option);
+                    }
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 @endsection
 
 </html>
