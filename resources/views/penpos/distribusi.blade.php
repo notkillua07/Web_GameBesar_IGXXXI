@@ -73,13 +73,13 @@
             <div class="col-12">
                 <div class="form-outline mb-3">
                     <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Input Muatan</label>
-                    <input type="number" id="typeNumber" class="form-control w-25" min="1" max="999999">
+                    <input type="number" id="muatan" class="form-control w-25" min="1" max="999999">
                 </div>
             </div>
 
             {{-- Button Pengecekan Muatan --}}
             <div class="col-12">
-                <button type="button" class="btn btn-primary" id="btnCekMuatan"><i class="bi bi-search"></i> Cek
+                <button type="button" class="btn btn-primary" id="btnCekMuatan" onclick="cekMuatan()"><i class="bi bi-search"></i> Cek
                     Muatan</button>
 
                 <script></script>
@@ -110,7 +110,7 @@
                     </div>
 
                     {{-- Button Submit --}}
-                    <button type="button" class="btn btn-primary"><i class="bi bi-send-fill"></i> Kirim</button>
+                    <button type="button" class="btn btn-primary" onclick="sendMuatan()"><i class="bi bi-send-fill"></i> Kirim</button>
                 </div>
             </div>
         </div>
@@ -192,6 +192,50 @@
                         // Append the option group to the combobox
                         $('#jenisJasa').append(option);
                     }
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        const cekMuatan = () => {
+            let exp = $('#jenisJasa').val();
+            let muatan = $('#muatan').val();
+            console.log(exp, muatan);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('distribusi.cekMuatan') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'exp': exp,
+                    'muatan': muatan,
+                },
+                success: function(data) {
+                    console.log(data.msg)
+                    alert(data.msg);
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        const sendMuatan = () => {
+            let exp = $('#jenisJasa').val();
+            let muatan = $('#muatan').val();
+            console.log(exp, muatan);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('distribusi.cekMuatan') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'exp': exp,
+                    'muatan': muatan,
+                },
+                success: function(data) {
+                    console.log(data.msg)
+                    alert(data.msg);
                 },
                 error: function(data) {
                     window.location.reload();

@@ -57,4 +57,18 @@ class DistribusiController extends Controller
             'expeditions' => $expeditions,
         ), 200);
     }
+
+    public function cekMuatan(Request $request)
+    {
+        $expId = $request->exp;
+        $muat = $request->muatan;
+        $expedition = Expedition::where('id', $expId)->first();
+        $msg = "Muatan Cukup!";
+        if($muat > $expedition->capacity){
+            $msg = "Muatan Tidak Cukup!";
+        }
+        return response()->json(array(
+            'msg' => $msg,
+        ), 200);
+    }
 }
