@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Agu 2023 pada 07.44
+-- Waktu pembuatan: 28 Agu 2023 pada 14.42
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -38,6 +38,13 @@ CREATE TABLE `buys` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `buys`
+--
+
+INSERT INTO `buys` (`id`, `item_id`, `supplier_id`, `price`, `month`, `demands`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 54, 1, 1000, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -49,10 +56,11 @@ CREATE TABLE `buy_transactions` (
   `expedition_id` bigint(20) UNSIGNED NOT NULL,
   `buy_id` bigint(20) UNSIGNED NOT NULL,
   `inv_id` bigint(20) UNSIGNED NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` double NOT NULL,
   `demand_fulfilled` int(11) NOT NULL,
   `sent_at` datetime NOT NULL,
   `arrived_at` datetime NOT NULL,
+  `is_arrived` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -77,6 +85,21 @@ CREATE TABLE `expeditions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `expeditions`
+--
+
+INSERT INTO `expeditions` (`id`, `dest_id`, `name`, `route`, `type`, `capacity`, `time_taken`, `cost`, `ratingSpeed`, `ratingQuality`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Cargo', 'Darat', 'Kereta', 50, 400, 410, 3, 5, NULL, NULL),
+(2, 2, 'Cargo', 'Darat', 'Kereta', 50, 225, 410, 3, 5, NULL, NULL),
+(3, 3, 'Cargo', 'Darat', 'Kereta', 50, 75, 410, 3, 5, NULL, NULL),
+(4, 1, 'Si Fast', 'Darat', 'Truck Kontainer', 25, 436, 350, 2, 2, NULL, NULL),
+(5, 2, 'Si Fast', 'Darat', 'Truck Kontainer', 25, 245, 350, 2, 2, NULL, NULL),
+(6, 3, 'Si Fast', 'Darat', 'Truck Kontainer', 25, 82, 350, 2, 2, NULL, NULL),
+(7, 1, 'Si Fast', 'Laut', 'Kapal', 100, 533, 825, 2, 2, NULL, NULL),
+(8, 2, 'Si Fast', 'Laut', 'Kapal', 100, 300, 825, 2, 2, NULL, NULL),
+(9, 3, 'Si Fast', 'Laut', 'Kapal', 100, 100, 825, 2, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,7 +137,7 @@ CREATE TABLE `inventories` (
 --
 
 INSERT INTO `inventories` (`id`, `team_id`, `item_id`, `amount`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, 1, NULL, NULL);
+(2, 1, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -310,7 +333,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(1, 'Tim 1', 1, 600, 1, 1100, '2023-08-15 08:14:39', '2023-08-15 02:57:56');
+(1, 'Tim 1', 1, 600, 1, 11000, '2023-08-15 08:14:39', '2023-08-15 02:57:56');
 
 -- --------------------------------------------------------
 
@@ -447,19 +470,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `buys`
 --
 ALTER TABLE `buys`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `buy_transactions`
 --
 ALTER TABLE `buy_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `expeditions`
 --
 ALTER TABLE `expeditions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
