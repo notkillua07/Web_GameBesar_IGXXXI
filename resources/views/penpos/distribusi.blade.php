@@ -156,14 +156,14 @@
                     for (let i = 0; i < data.amounts.length; i++) {
                         // Create a new option group element
                         var option =
-                            `<option value="${data.names[i].id}">${data.names[i].name} [${data.amounts[i].amount}]</option>`;
+                            `<option value="${data.amounts[i].id}">${data.names[i].name} [${data.amounts[i].amount}]</option>`;
                         // Append the option group to the combobox
                         $('#barang').append(option);
                     }
                     alert(data.msg);
                 },
                 error: function(data) {
-                    window.location.reload();
+                    alert("Isikan Kota pengiriman!");
                 }
             });
         }
@@ -223,15 +223,15 @@
 
         const sendMuatan = () => {
             let exp = $('#jenisJasa').val();
-            let muatan = $('#muatan').val();
-            console.log(exp, muatan);
+            let inv = $('#barang').val();
+            console.log(exp, inv);
             $.ajax({
                 type: 'POST',
-                url: '{{ route('distribusi.cekMuatan') }}',
+                url: '{{ route('distribusi.sendMuatan') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'exp': exp,
-                    'muatan': muatan,
+                    'inv': inv,
                 },
                 success: function(data) {
                     console.log(data.msg)

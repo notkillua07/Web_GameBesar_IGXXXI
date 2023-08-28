@@ -55,6 +55,7 @@ Route::group(
         Route::post('/distribusi-getInv', [App\Http\Controllers\DistribusiController::class, 'getInvSupply'])->name('distribusi.getInv');
         Route::post('/distribusi-getTrans', [App\Http\Controllers\DistribusiController::class, 'getTransport'])->name('distribusi.getTrans');
         Route::post('/distribusi-cekMuatan', [App\Http\Controllers\DistribusiController::class, 'cekMuatan'])->name('distribusi.cekMuatan');
+        Route::post('/distribusi-sendMuatan', [App\Http\Controllers\DistribusiController::class, 'sendMuatan'])->name('distribusi.sendMuatan');
     }
 );
 
