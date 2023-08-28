@@ -21,7 +21,7 @@ class CreateSellsTable extends Migration
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onUpdate('cascade')->onDelete('cascade');
             $table->double('price');
             $table->integer('month');
-            $table->integer('stocks');
+            $table->double('stocks');
             $table->timestamps();
         });
     }

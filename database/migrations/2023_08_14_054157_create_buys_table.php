@@ -21,7 +21,7 @@ class CreateBuysTable extends Migration
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onUpdate('cascade')->onDelete('cascade');
             $table->double('price');
             $table->integer('month');
-            $table->integer('demands');
+            $table->double('demands');
             $table->timestamps();
         });
     }
