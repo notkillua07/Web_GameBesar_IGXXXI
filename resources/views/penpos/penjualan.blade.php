@@ -112,6 +112,35 @@
                 }
             });
         }
+
+        const sellInv = () => {
+            let teamName = $('#team').val();
+            let invId = $('#barang').val();
+            $('#barang').html(
+                "<option value = '-' disabled selected>- Pilih Barang yang sudah Sampai -</option>")
+            console.log(teamName);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('penjualan.sellInv') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'teamName': teamName,
+                },
+                success: function(data) {
+                    console.log(data.buyTrans);
+                    for (let i = 0; i < data.buyTrans.length; i++) {
+                        // Create a new option group element
+                        var option =
+                            `<option value="${data.buyTrans[i].id}">${data.itemName[i].name} [${data.buyTrans[i].amount}]</option>`;
+                        // Append the option group to the combobox
+                        $('#barang').append(option);
+                    }
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
     </script>
 @endsection
 

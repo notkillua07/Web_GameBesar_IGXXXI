@@ -238,7 +238,8 @@
                     alert(data.msg);
                 },
                 error: function(data) {
-                    window.location.reload();
+                    console.log(data.msg)
+                    //window.location.reload();
                 }
             });
         }

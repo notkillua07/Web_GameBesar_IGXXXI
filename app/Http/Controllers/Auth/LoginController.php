@@ -70,7 +70,7 @@ class LoginController extends Controller
 
                 return redirect()->intended('pembelian');
 
-            } else if (Auth::user()->role == "1") {
+            } else if (Auth::user()->role == "4") {
 
                 return redirect()->intended('penjualan');
 
