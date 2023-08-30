@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BuyTransaction;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Supplier;
@@ -32,25 +33,23 @@ class PenjualanController extends Controller
 
     public function getInvSupply(Request $request)
     {
-        $city = $request->city;
         $teamName = $request->teamName;
         $teamName = str_replace("+"," ",$teamName);
         $team = Team::where('name', $teamName)->first();
         $teamInv = Inventory::where('team_id',$team->id)->get();
-        $items = Item::where('city',$city)->get();
-        $invAmount = [];
-        $invName = [];
-        foreach($teamInv as $item){
-            foreach($items as $it){
-                if($item->item_id == $it->id){
-                    array_push($invAmount, $item);
-                    array_push($invName, $it);
-                }
+        $buyTrans = [];
+        $itemName = [];
+        foreach($teamInv as $inv){
+            $bt = BuyTransaction::where('inv_id',$inv->id)->where('status','arrived')->first();
+            $item = Item::where('id',$inv->item_id)->first();
+            if($bt != null && $item != null){
+                array_push($buyTrans, $bt);
+                array_push($itemName, $item);
             }
         }
         return response()->json(array(
-            'amounts' => $invAmount,
-            'names' => $invName,
+            'buyTrans' => $buyTrans,
+            'itemName' => $itemName,
         ), 200);
     }
 }

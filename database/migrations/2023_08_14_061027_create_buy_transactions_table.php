@@ -23,6 +23,7 @@ class CreateBuyTransactionsTable extends Migration
             $table->foreign('inv_id')->references('id')->on('inventories')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('amount');
             $table->integer('demand_fulfilled');
+            $table->enum('status',['sending','arrived','sold']);
             $table->dateTime('sent_at');
             $table->dateTime('arrived_at');
             $table->timestamps();

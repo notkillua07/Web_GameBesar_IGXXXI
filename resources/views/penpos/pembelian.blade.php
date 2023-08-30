@@ -155,17 +155,17 @@
         }
         const buySupply = () => {
             let teamName = $('#team').val();
-            let itemName = $('#barang').val();
+            let itemId = $('#barang').val();
             let city = $('#kotaTujuan').val();
             let amount = $('#amount').val();
-            console.log(teamName, itemName, city, amount);
+            console.log(teamName, itemId, city, amount);
             $.ajax({
                 type: 'POST',
                 url: '{{ route('pembelian.buySup') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'teamName': teamName,
-                    'itemName': itemName,
+                    'itemId': itemId,
                     'city': city,
                     'amount': amount,
                 },

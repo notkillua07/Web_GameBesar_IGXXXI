@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Sell;
 use App\Models\Supplier;
@@ -57,8 +58,8 @@ class PembelianController extends Controller
         $teamName = str_replace("+", " ", $teamName);
         $team = Team::where('name', $teamName)->first();
         $teamCurr = $team->currency;
-        $itemName = $request->itemName;
-        $item = Item::where('name',$itemName)->first();
+        $itemId = $request->itemId;
+        $item = Item::where('id',$itemId)->first();
         $amount = $request->amount;
         $cityName = $request->city;
         $city = Supplier::where('city', $cityName)->first();
@@ -70,16 +71,23 @@ class PembelianController extends Controller
                 $sell->stocks -= $amount;
                 $team->currency -= $price;
                 $team->fulfill_demands += $amount;
-                DB::table('inventories')->insert([
-                    'team_id' => $team->id,
-                    'item_id' => $item->id,
-                    'amount' => $amount,
-                ]);
-                DB::table('sell_transactions')->insert([
-                    'team_id' => $team->id,
-                    'item_id' => $item->id,
-                    'amount' => $amount,
-                ]);
+                $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->get();
+                if(count($invSearch) < 1){
+                    DB::table('inventories')->insert([
+                        'team_id' => $team->id,
+                        'item_id' => $item->id,
+                        'amount' => $amount,
+                    ]);
+                    $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->first();
+                    DB::table('sell_transactions')->insert([
+                        'inv_id' => $invSearch->id,
+                        'sell_id' => $sell->id,
+                        'amount' => $amount,
+                    ]);
+                }else{
+                    $invSearch[0]->amount += $amount;
+                    $invSearch[0]->save();
+                }
                 $sell->save();
                 $team->save();
                 $msg = "Successfully bought!";

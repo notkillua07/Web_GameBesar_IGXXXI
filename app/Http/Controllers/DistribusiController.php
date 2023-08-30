@@ -130,10 +130,13 @@ class DistribusiController extends Controller
                 $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken)+$addTime));
                 $buyTrans->sent_at = $sendTime;
                 $buyTrans->arrived_at = $arrTime;
+                $buyTrans->status = 'arrived';
                 $buyTrans->save();
                 $inv->amount = 0;
                 $inv->save();
-                $msg = "Successfully sent will arrive at $arrTime";
+                $team->currency = ($team->currency - ($expedition->cost) * $mult);
+                $team->save();
+                $msg = "Successfully sent will arrive at ".(date("H:i:s", $t + ($expedition->time_taken)+$addTime));
             } else {
                 $msg = "You don't have enough currency to send";
             }
