@@ -123,7 +123,7 @@ class DistribusiController extends Controller
                 $buyTrans->inv_id = $inv->id;
                 $buyTrans->buy_id = $buy->id;
                 $buyTrans->amount = $amount;
-                $buyTrans->demand_fulfilled = $amount;
+                $buyTrans->demand_fulfilled = 0;
                 date_default_timezone_set("Asia/Jakarta");
                 $t = time();
                 $sendTime = (date("Y-m-d H:i:s", $t));

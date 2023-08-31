@@ -18,7 +18,7 @@
                 {{-- Pilih Tim --}}
                 <div class="form-outline mb-3">
                     <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                    <select name="team" id="team" class="form-select select2 mb-3" onchange="loadGanti()">
+                    <select name="team" id="team" class="form-select select2 mb-3">
                         <option value="-" selected disabled>- Pilih Team -</option>
                         @foreach ($teams as $team)
                             <option value="{{ $team->name }}" id="{{ $team->name }}">
@@ -57,7 +57,7 @@
                 </div>
 
                 {{-- Button Submit --}}
-                <button type="button" class="btn btn-primary">Konfirmasi</button>
+                <button type="button" class="btn btn-primary" onclick="sellInv()">Konfirmasi</button>
 
             </div>
         </div>
@@ -128,8 +128,8 @@
                     'btId': btId,
                 },
                 success: function(data) {
-                    console.log(data.buyTrans);
-                    
+                    console.log(data.msg);
+                    alert(data.msg);
                 },
                 error: function(data) {
                     window.location.reload();

@@ -73,12 +73,16 @@ class PenjualanController extends Controller
                 $bt->demand_fulfilled += $bt->amount;
                 $team->currency += $profit;
                 $buy->demands -= $bt->amount;
+                $bt->status = "sold";
                 $buy->save();
                 $bt->save();
                 $team->save();
+                $msg ="Barang berhasil dijual! \nMendapatkan koin: $profit! \nTotal koin $team->name: $team->currency";
             } else {
-
+                $msg="Barang belum sampai!";
             }
+        }else{
+            $msg="Maaf demands sudah habis";
         }
         return response()->json(array(
             'msg' => $msg,
