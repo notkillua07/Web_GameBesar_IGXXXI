@@ -33,6 +33,7 @@ Route::group(
         // Penjualan
         Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
         Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
+        Route::post('/penjualan-sell', [App\Http\Controllers\PenjualanController::class, 'sellInventory'])->name('penjualan.sellInv');
     }
 );
 
