@@ -67,7 +67,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -80,6 +80,9 @@
                                 </li>
                             @endif
                         @endguest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>

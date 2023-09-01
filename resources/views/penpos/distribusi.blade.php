@@ -111,6 +111,9 @@
 
                     {{-- Button Submit --}}
                     <button type="button" class="btn btn-primary" onclick="sendMuatan()"><i class="bi bi-send-fill"></i> Kirim</button>
+                    
+                    {{-- Button Penjualan --}}
+                    <a href="{{ __('') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Penjualan</a>
                 </div>
             </div>
         </div>
