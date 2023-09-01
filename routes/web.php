@@ -67,3 +67,11 @@ Route::group(
         Route::post('/penpos-hutang', [\App\Http\Controllers\HutangController::class, 'hutangTim'])->name('penpos.hutang');
     }
 );
+
+Route::group(
+    ['middleware' => ['auth', 'dashboard']],
+    function () {
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        //Route::post('/dashboard', [\App\Http\Controllers\HutangController::class, ''])->name('peserta.dashboard');
+    }
+);
