@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Agu 2023 pada 14.42
+-- Waktu pembuatan: 01 Sep 2023 pada 03.58
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,7 +43,7 @@ CREATE TABLE `buys` (
 --
 
 INSERT INTO `buys` (`id`, `item_id`, `supplier_id`, `price`, `month`, `demands`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 54, 1, 1000, NULL, NULL);
+(1, 1, 1, 54, 1, 904, NULL, '2023-08-31 11:59:49');
 
 -- --------------------------------------------------------
 
@@ -58,12 +58,21 @@ CREATE TABLE `buy_transactions` (
   `inv_id` bigint(20) UNSIGNED NOT NULL,
   `amount` double NOT NULL,
   `demand_fulfilled` int(11) NOT NULL,
+  `cap_left` int(11) NOT NULL,
   `sent_at` datetime NOT NULL,
   `arrived_at` datetime NOT NULL,
-  `is_arrived` tinyint(1) NOT NULL DEFAULT 0,
+  `status` enum('sending','arrived','sold') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `buy_transactions`
+--
+
+INSERT INTO `buy_transactions` (`id`, `expedition_id`, `buy_id`, `inv_id`, `amount`, `demand_fulfilled`, `cap_left`, `sent_at`, `arrived_at`, `status`, `created_at`, `updated_at`) VALUES
+(3, 1, 1, 2, 48, 48, 0, '2023-08-30 17:51:40', '2023-08-30 17:58:50', 'sold', '2023-08-30 10:51:40', '2023-08-31 11:28:30'),
+(4, 1, 1, 2, 48, 48, 0, '2023-08-31 18:57:31', '2023-08-31 18:58:41', 'sold', '2023-08-31 11:57:31', '2023-08-31 11:59:49');
 
 -- --------------------------------------------------------
 
@@ -252,7 +261,7 @@ CREATE TABLE `sells` (
 --
 
 INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `month`, `stocks`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 100, 1, 3599, NULL, '2023-08-24 18:19:38');
+(1, 1, 1, 100, 1, 3469, NULL, '2023-08-31 04:54:16');
 
 -- --------------------------------------------------------
 
@@ -268,6 +277,14 @@ CREATE TABLE `sell_transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `sell_transactions`
+--
+
+INSERT INTO `sell_transactions` (`id`, `sell_id`, `inv_id`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 20, NULL, NULL),
+(2, 1, 2, 20, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -333,7 +350,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(1, 'Tim 1', 1, 600, 1, 11000, '2023-08-15 08:14:39', '2023-08-15 02:57:56');
+(1, 'Tim 1', 131, 600, 1, 23624, '2023-08-15 08:14:39', '2023-08-31 11:59:49');
 
 -- --------------------------------------------------------
 
@@ -357,7 +374,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
 (1, 'Penpos Pembelian', 'pembelian', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
-(2, 'Penpos Penjualan', 'penjualan', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(2, 'Penpos Penjualan', 'penjualan', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
 (3, 'Penpos Distribusi', 'distribusi', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 2, NULL, NULL),
 (4, 'Penpos Hutang', 'hutang', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 3, NULL, NULL);
 
@@ -476,7 +493,7 @@ ALTER TABLE `buys`
 -- AUTO_INCREMENT untuk tabel `buy_transactions`
 --
 ALTER TABLE `buy_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `expeditions`
@@ -494,7 +511,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `items`
@@ -518,7 +535,7 @@ ALTER TABLE `sells`
 -- AUTO_INCREMENT untuk tabel `sell_transactions`
 --
 ALTER TABLE `sell_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `sessions`

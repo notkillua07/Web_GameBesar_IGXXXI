@@ -124,6 +124,7 @@ class DistribusiController extends Controller
                 $buyTrans->buy_id = $buy->id;
                 $buyTrans->amount = $amount;
                 $buyTrans->demand_fulfilled = 0;
+                $buyTrans->cap_left = $expedition->capacity - $inv->amount;
                 date_default_timezone_set("Asia/Jakarta");
                 $t = time();
                 $sendTime = (date("Y-m-d H:i:s", $t));
