@@ -1,10 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.loginapp')
 
 @section('content')
+
+    <div class="logo-container">
+        <img src="/assets/IG_Logo.png" alt="">
+    </div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
@@ -16,7 +21,7 @@
                             @csrf
                             <div class="row mb-3">
                                 <label for="username"
-                                    class="col-md-4 col-form-label text-md-right text-lg-center">{{ __('Username') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="username"
