@@ -1,16 +1,17 @@
 @extends('layouts.loginapp')
-
+@section('styles')
+@endsection
 @section('content')
 
-    <div class="logo-container">
-        <img src="/assets/IG_Logo.png" alt="">
+    <div class="logo-container my-4" style="text-align: center;">
+        <img src="/assets/Logo_Big.png" style="height: 150px;">
     </div>
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card mt-3">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header text-center"><h1>{{ __('Login') }}</h1></div>
 
                     <div class="card-body">
                         @if (Session::has('loginError'))
