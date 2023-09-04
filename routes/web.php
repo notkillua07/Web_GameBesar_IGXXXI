@@ -34,6 +34,11 @@ Route::group(
         Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
         Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
         Route::post('/penjualan-sell', [App\Http\Controllers\PenjualanController::class, 'sellInventory'])->name('penjualan.sellInv');
+        Route::get('/distribusi', [App\Http\Controllers\DistribusiController::class, 'index'])->name('distribusi');
+        Route::post('/distribusi-getInv', [App\Http\Controllers\DistribusiController::class, 'getInvSupply'])->name('distribusi.getInv');
+        Route::post('/distribusi-getTrans', [App\Http\Controllers\DistribusiController::class, 'getTransport'])->name('distribusi.getTrans');
+        Route::post('/distribusi-cekMuatan', [App\Http\Controllers\DistribusiController::class, 'cekMuatan'])->name('distribusi.cekMuatan');
+        Route::post('/distribusi-sendMuatan', [App\Http\Controllers\DistribusiController::class, 'sendMuatan'])->name('distribusi.sendMuatan');
     }
 );
 
@@ -57,6 +62,9 @@ Route::group(
         Route::post('/distribusi-getTrans', [App\Http\Controllers\DistribusiController::class, 'getTransport'])->name('distribusi.getTrans');
         Route::post('/distribusi-cekMuatan', [App\Http\Controllers\DistribusiController::class, 'cekMuatan'])->name('distribusi.cekMuatan');
         Route::post('/distribusi-sendMuatan', [App\Http\Controllers\DistribusiController::class, 'sendMuatan'])->name('distribusi.sendMuatan');
+        Route::get('/penjualan', [App\Http\Controllers\PenjualanController::class, 'index'])->name('penjualan');
+        Route::post('/penjualan-get', [App\Http\Controllers\PenjualanController::class, 'getInvSupply'])->name('penjualan.getInv');
+        Route::post('/penjualan-sell', [App\Http\Controllers\PenjualanController::class, 'sellInventory'])->name('penjualan.sellInv');
     }
 );
 
@@ -72,6 +80,6 @@ Route::group(
     ['middleware' => ['auth', 'dashboard']],
     function () {
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-        //Route::post('/dashboard', [\App\Http\Controllers\HutangController::class, ''])->name('peserta.dashboard');
+
     }
 );

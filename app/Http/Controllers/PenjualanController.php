@@ -69,7 +69,7 @@ class PenjualanController extends Controller
             date_default_timezone_set("Asia/Jakarta");
             $t = time();
             if (strtotime($bt->arrived_at) < $t) {
-                $profit = $bt->amount * $buy->price;
+                $profit = ($bt->amount * 100) * $buy->price;
                 $bt->demand_fulfilled += $bt->amount;
                 $team->currency += $profit;
                 $buy->demands -= $bt->amount;

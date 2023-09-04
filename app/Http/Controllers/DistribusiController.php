@@ -67,7 +67,7 @@ class DistribusiController extends Controller
         $muat = $request->muatan;
         $expedition = Expedition::where('id', $expId)->first();
         $msg = "Muatan Cukup!";
-        if ($muat > $expedition->capacity) {
+        if (($muat * 10 / 1000) > $expedition->capacity) {
             $msg = "Muatan Tidak Cukup!";
         }
         return response()->json(array(
@@ -117,18 +117,18 @@ class DistribusiController extends Controller
         if ($inv->amount <= $expedition->capacity) {
             // var_dump($team->currency, $expedition->cost, $mult);
             if (($team->currency - ($expedition->cost) * $mult) > 0) {
-                $amount = ($inv->amount) * $defect;
+                $amount = ($inv->amount / 100) * $defect;
                 $buyTrans = new BuyTransaction();
                 $buyTrans->expedition_id = $expedition->id;
                 $buyTrans->inv_id = $inv->id;
                 $buyTrans->buy_id = $buy->id;
                 $buyTrans->amount = $amount;
                 $buyTrans->demand_fulfilled = 0;
-                $buyTrans->cap_left = $expedition->capacity - $inv->amount;
+                $buyTrans->cap_left = $amount/$expedition->capacity;
                 date_default_timezone_set("Asia/Jakarta");
                 $t = time();
                 $sendTime = (date("Y-m-d H:i:s", $t));
-                $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken)+$addTime));
+                $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken) + $addTime));
                 $buyTrans->sent_at = $sendTime;
                 $buyTrans->arrived_at = $arrTime;
                 $buyTrans->status = 'arrived';
@@ -137,7 +137,7 @@ class DistribusiController extends Controller
                 $inv->save();
                 $team->currency = ($team->currency - ($expedition->cost) * $mult);
                 $team->save();
-                $msg = "Successfully sent will arrive at ".(date("H:i:s", $t + ($expedition->time_taken)+$addTime));
+                $msg = "Successfully sent will arrive at " . (date("H:i:s", $t + ($expedition->time_taken) + $addTime));
             } else {
                 $msg = "You don't have enough currency to send";
             }
