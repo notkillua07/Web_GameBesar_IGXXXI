@@ -120,7 +120,7 @@ class DistribusiController extends Controller
         $team = Team::where('id', $inv->team_id)->first();
         $session = DB::table('sessions')->first();
         $buy = Buy::where('item_id', $inv->item_id)->where('supplier_id', $expedition->dest_id)->where('month', $session->month)->first();
-        if ($inv->amount <= $expedition->capacity) {
+        if (($inv->amount/100) <= $expedition->capacity) {
             // var_dump($team->currency, $expedition->cost, $mult);
             if (($team->currency - ($expedition->cost) * $mult) >= 0) {
                 $amount = ($inv->amount / 100) * $defect;

@@ -105,7 +105,7 @@
                     for (let i = 0; i < data.buyTrans.length; i++) {
                         // Create a new option group element
                         var option =
-                            `<option value="${data.buyTrans[i].id}">${data.itemName[i].name} [${data.buyTrans[i].amount}]</option>`;
+                            `<option value="${data.buyTrans[i].id}">${data.itemName[i].name} [${data.buyTrans[i].amount * 100}]</option>`;
                         // Append the option group to the combobox
                         $('#barang').append(option);
                     }
