@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Sep 2023 pada 03.58
+-- Waktu pembuatan: 04 Sep 2023 pada 13.33
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,7 +43,33 @@ CREATE TABLE `buys` (
 --
 
 INSERT INTO `buys` (`id`, `item_id`, `supplier_id`, `price`, `month`, `demands`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 54, 1, 904, NULL, '2023-08-31 11:59:49');
+(1, 1, 1, 47, 1, 3600, NULL, '2023-08-31 11:59:49'),
+(2, 2, 1, 45, 1, 3600, NULL, NULL),
+(3, 3, 1, 61.18, 1, 3600, NULL, NULL),
+(4, 1, 1, 68.6, 2, 3600, NULL, NULL),
+(5, 2, 1, 45, 2, 3600, NULL, NULL),
+(6, 3, 1, 41, 2, 3600, NULL, NULL),
+(7, 1, 1, 47, 3, 3600, NULL, NULL),
+(8, 2, 1, 68.6, 3, 3600, NULL, NULL),
+(9, 3, 1, 41, 3, 3600, NULL, NULL),
+(10, 4, 1, 42, 1, 3600, NULL, NULL),
+(11, 5, 1, 63.5, 1, 3600, NULL, NULL),
+(12, 6, 1, 48, 1, 3600, NULL, NULL),
+(13, 4, 1, 42, 2, 3600, NULL, NULL),
+(14, 5, 1, 46, 2, 3600, NULL, NULL),
+(15, 6, 1, 62.22, 2, 3600, NULL, NULL),
+(16, 4, 1, 58.5, 3, 3600, NULL, NULL),
+(17, 5, 1, 46, 3, 3600, NULL, NULL),
+(18, 6, 1, 48, 3, 3600, NULL, NULL),
+(19, 7, 1, 51, 1, 3600, NULL, NULL),
+(20, 8, 1, 60.42, 1, 3600, NULL, NULL),
+(21, 9, 1, 50, 1, 3600, NULL, NULL),
+(22, 7, 1, 51, 2, 3600, NULL, NULL),
+(23, 8, 1, 49, 2, 3600, NULL, NULL),
+(24, 9, 1, 61.6, 2, 3600, NULL, NULL),
+(25, 7, 1, 63.72, 3, 3600, NULL, NULL),
+(26, 8, 1, 49, 3, 3600, NULL, NULL),
+(27, 9, 1, 50, 3, 3600, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -58,21 +84,13 @@ CREATE TABLE `buy_transactions` (
   `inv_id` bigint(20) UNSIGNED NOT NULL,
   `amount` double NOT NULL,
   `demand_fulfilled` int(11) NOT NULL,
-  `cap_left` int(11) NOT NULL,
+  `cap_left` double NOT NULL,
   `sent_at` datetime NOT NULL,
   `arrived_at` datetime NOT NULL,
   `status` enum('sending','arrived','sold') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `buy_transactions`
---
-
-INSERT INTO `buy_transactions` (`id`, `expedition_id`, `buy_id`, `inv_id`, `amount`, `demand_fulfilled`, `cap_left`, `sent_at`, `arrived_at`, `status`, `created_at`, `updated_at`) VALUES
-(3, 1, 1, 2, 48, 48, 0, '2023-08-30 17:51:40', '2023-08-30 17:58:50', 'sold', '2023-08-30 10:51:40', '2023-08-31 11:28:30'),
-(4, 1, 1, 2, 48, 48, 0, '2023-08-31 18:57:31', '2023-08-31 18:58:41', 'sold', '2023-08-31 11:57:31', '2023-08-31 11:59:49');
 
 -- --------------------------------------------------------
 
@@ -108,7 +126,19 @@ INSERT INTO `expeditions` (`id`, `dest_id`, `name`, `route`, `type`, `capacity`,
 (6, 3, 'Si Fast', 'Darat', 'Truck Kontainer', 25, 82, 350, 2, 2, NULL, NULL),
 (7, 1, 'Si Fast', 'Laut', 'Kapal', 100, 533, 825, 2, 2, NULL, NULL),
 (8, 2, 'Si Fast', 'Laut', 'Kapal', 100, 300, 825, 2, 2, NULL, NULL),
-(9, 3, 'Si Fast', 'Laut', 'Kapal', 100, 100, 825, 2, 2, NULL, NULL);
+(9, 3, 'Si Fast', 'Laut', 'Kapal', 100, 100, 825, 2, 2, NULL, NULL),
+(10, 1, 'Jalur Kurir', 'Darat', 'Truck Kontainer', 25, 480, 285, 5, 3, NULL, NULL),
+(11, 2, 'Jalur Kurir', 'Darat', 'Truck Kontainer', 25, 270, 285, 5, 3, NULL, NULL),
+(12, 3, 'Jalur Kurir', 'Darat', 'Truck Kontainer', 25, 90, 285, 5, 3, NULL, NULL),
+(13, 1, 'Jalur Kurir', 'Laut', 'Kapal', 100, 1125, 140, 5, 3, NULL, NULL),
+(14, 2, 'Jalur', 'Laut', 'Kapal', 100, 713, 140, 5, 3, NULL, NULL),
+(15, 3, 'Jalur Kurir', 'Laut', 'Kapal', 100, 338, 140, 5, 3, NULL, NULL),
+(16, 1, 'JNA', 'Darat', 'Truck Kontainer', 25, 533, 215, 4, 4, NULL, NULL),
+(17, 2, 'JNA', 'Darat', 'Truck Kontainer', 25, 300, 215, 4, 4, NULL, NULL),
+(18, 3, 'JNA', 'Darat', 'Truck Kontainer', 25, 100, 215, 4, 4, NULL, NULL),
+(19, 1, 'JNA', 'Laut', 'Kapal', 100, 1286, 65, 4, 4, NULL, NULL),
+(20, 2, 'JNA', 'Laut', 'Kapal', 100, 814, 65, 4, 4, NULL, NULL),
+(21, 3, 'JNA', 'Laut', 'Kapal', 100, 386, 65, 4, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,13 +170,6 @@ CREATE TABLE `inventories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `inventories`
---
-
-INSERT INTO `inventories` (`id`, `team_id`, `item_id`, `amount`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -250,7 +273,6 @@ CREATE TABLE `sells` (
   `item_id` bigint(20) UNSIGNED NOT NULL,
   `supplier_id` bigint(20) UNSIGNED NOT NULL,
   `price` double NOT NULL,
-  `month` int(11) NOT NULL,
   `stocks` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -260,8 +282,34 @@ CREATE TABLE `sells` (
 -- Dumping data untuk tabel `sells`
 --
 
-INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `month`, `stocks`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 100, 1, 3469, NULL, '2023-08-31 04:54:16');
+INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `stocks`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 49, 135000, NULL, '2023-09-04 02:03:08'),
+(2, 2, 1, 47, 135000, NULL, NULL),
+(3, 3, 1, 46, 135000, NULL, NULL),
+(4, 4, 1, 45, 135000, NULL, NULL),
+(5, 5, 1, 50, 135000, NULL, NULL),
+(6, 6, 1, 51, 135000, NULL, NULL),
+(7, 7, 1, 54, 135000, NULL, NULL),
+(8, 8, 1, 53, 135000, NULL, NULL),
+(9, 9, 1, 55, 135000, NULL, NULL),
+(10, 10, 2, 32, 135000, NULL, NULL),
+(11, 11, 2, 35, 134900, NULL, '2023-09-04 04:25:55'),
+(12, 12, 2, 30, 135000, NULL, NULL),
+(13, 13, 2, 28, 135000, NULL, NULL),
+(14, 14, 2, 25, 135000, NULL, NULL),
+(15, 15, 2, 27, 135000, NULL, NULL),
+(16, 16, 2, 35, 135000, NULL, NULL),
+(17, 17, 2, 36, 135000, NULL, NULL),
+(18, 18, 2, 26, 135000, NULL, NULL),
+(19, 19, 3, 18, 135000, NULL, NULL),
+(20, 20, 3, 15, 135000, NULL, NULL),
+(21, 21, 3, 13, 135000, NULL, NULL),
+(22, 22, 3, 12, 135000, NULL, NULL),
+(23, 23, 3, 17, 135000, NULL, NULL),
+(24, 24, 3, 18, 135000, NULL, NULL),
+(25, 25, 3, 18, 135000, NULL, NULL),
+(26, 26, 3, 20, 135000, NULL, NULL),
+(27, 27, 3, 18, 135000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,14 +325,6 @@ CREATE TABLE `sell_transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `sell_transactions`
---
-
-INSERT INTO `sell_transactions` (`id`, `sell_id`, `inv_id`, `amount`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 20, NULL, NULL),
-(2, 1, 2, 20, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -350,7 +390,13 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(1, 'Tim 1', 131, 600, 1, 23624, '2023-08-15 08:14:39', '2023-08-31 11:59:49');
+(1, 'Tim 1', 181, 600, 1, 30000, '2023-08-15 08:14:39', '2023-09-04 02:03:08'),
+(2, 'Tim 2', 0, 0, 0, 30000, '2023-09-02 14:59:44', '2023-09-04 04:25:55'),
+(3, 'Tim 3', 0, 0, 0, 30000, '2023-09-02 15:00:25', '2023-09-02 15:00:25'),
+(4, 'Tim 4', 0, 0, 0, 0, '2023-09-02 15:00:45', '2023-09-02 15:00:45'),
+(5, 'Tim 5', 0, 0, 0, 0, '2023-09-02 15:00:45', '2023-09-02 15:00:45'),
+(6, 'Tim 6', 0, 0, 0, 0, NULL, NULL),
+(7, 'Tim 7', 0, 0, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -376,7 +422,9 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `created_at`,
 (1, 'Penpos Pembelian', 'pembelian', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
 (2, 'Penpos Penjualan', 'penjualan', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
 (3, 'Penpos Distribusi', 'distribusi', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 2, NULL, NULL),
-(4, 'Penpos Hutang', 'hutang', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 3, NULL, NULL);
+(4, 'Penpos Hutang', 'hutang', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 3, NULL, NULL),
+(5, 'Tim 1', 'tim1', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 5, NULL, NULL),
+(6, 'Tim 2', 'tim2', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 5, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -487,7 +535,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `buys`
 --
 ALTER TABLE `buys`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `buy_transactions`
@@ -499,7 +547,7 @@ ALTER TABLE `buy_transactions`
 -- AUTO_INCREMENT untuk tabel `expeditions`
 --
 ALTER TABLE `expeditions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -511,7 +559,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `items`
@@ -529,13 +577,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `sells`
 --
 ALTER TABLE `sells`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `sell_transactions`
 --
 ALTER TABLE `sell_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `sessions`
@@ -553,13 +601,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT untuk tabel `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -50,6 +50,11 @@ Route::group(
         Route::post('/pembelian-getCur', [App\Http\Controllers\PembelianController::class, 'getCurrency'])->name('pembelian.getCurr');
         Route::post('/pembelian-get', [App\Http\Controllers\PembelianController::class, 'getCitySupply'])->name('pembelian.getCity');
         Route::post('/pembelian-buy', [App\Http\Controllers\PembelianController::class, 'buySupply'])->name('pembelian.buySup');
+        Route::get('/distribusi', [App\Http\Controllers\DistribusiController::class, 'index'])->name('distribusi');
+        Route::post('/distribusi-getInv', [App\Http\Controllers\DistribusiController::class, 'getInvSupply'])->name('distribusi.getInv');
+        Route::post('/distribusi-getTrans', [App\Http\Controllers\DistribusiController::class, 'getTransport'])->name('distribusi.getTrans');
+        Route::post('/distribusi-cekMuatan', [App\Http\Controllers\DistribusiController::class, 'cekMuatan'])->name('distribusi.cekMuatan');
+        Route::post('/distribusi-sendMuatan', [App\Http\Controllers\DistribusiController::class, 'sendMuatan'])->name('distribusi.sendMuatan');
     }
 );
 

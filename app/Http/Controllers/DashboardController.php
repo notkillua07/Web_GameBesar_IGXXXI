@@ -19,6 +19,7 @@ class DashboardController extends Controller
             $bt = BuyTransaction::where('inv_id', $inv->id)->get();
             array_push($arrOfBT, $bt);
         }
+        // dd($arrOfBT[0][1]->expedition_id);
         return view('peserta.dashboard', compact('tim', 'arrOfBT'));
     }
 }

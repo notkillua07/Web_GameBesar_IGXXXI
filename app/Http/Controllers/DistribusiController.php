@@ -83,12 +83,18 @@ class DistribusiController extends Controller
         $mult = 1;
         $addTime = 0;
         $defect = 0;
-        if ($expedition->dest_id == 1) {
+        if ($expedition->dest_id == 1 && $expedition->route == "Darat") {
             $mult = 8;
-        } else if ($expedition->dest_id == 2) {
+        } else if ($expedition->dest_id == 2 && $expedition->route == "Darat") {
             $mult = 4.5;
-        } else if ($expedition->dest_id == 3) {
+        } else if ($expedition->dest_id == 3 && $expedition->route == "Darat") {
             $mult = 1.5;
+        } else if ($expedition->dest_id == 1 && $expedition->route == "Laut") {
+            $mult = 15;
+        } else if ($expedition->dest_id == 2 && $expedition->route == "Laut") {
+            $mult = 9.5;
+        } else if ($expedition->dest_id ==  3&& $expedition->route == "Laut") {
+            $mult = 4.5;
         }
 
         if ($expedition->ratingSpeed == 3) {
@@ -116,7 +122,7 @@ class DistribusiController extends Controller
         $buy = Buy::where('item_id', $inv->item_id)->where('supplier_id', $expedition->dest_id)->where('month', $session->month)->first();
         if ($inv->amount <= $expedition->capacity) {
             // var_dump($team->currency, $expedition->cost, $mult);
-            if (($team->currency - ($expedition->cost) * $mult) > 0) {
+            if (($team->currency - ($expedition->cost) * $mult) >= 0) {
                 $amount = ($inv->amount / 100) * $defect;
                 $buyTrans = new BuyTransaction();
                 $buyTrans->expedition_id = $expedition->id;
@@ -124,7 +130,7 @@ class DistribusiController extends Controller
                 $buyTrans->buy_id = $buy->id;
                 $buyTrans->amount = $amount;
                 $buyTrans->demand_fulfilled = 0;
-                $buyTrans->cap_left = $amount/$expedition->capacity;
+                $buyTrans->cap_left = $amount / $expedition->capacity;
                 date_default_timezone_set("Asia/Jakarta");
                 $t = time();
                 $sendTime = (date("Y-m-d H:i:s", $t));

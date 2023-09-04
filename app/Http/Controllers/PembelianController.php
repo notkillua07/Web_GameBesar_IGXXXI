@@ -63,14 +63,12 @@ class PembelianController extends Controller
         $amount = $request->amount;
         $cityName = $request->city;
         $city = Supplier::where('city', $cityName)->first();
-        $session = DB::table('sessions')->first();
-        $sell = Sell::where('item_id', $item->id)->where('supplier_id', $city->id)->where('month', $session->month)->first();
+        $sell = Sell::where('item_id', $item->id)->where('supplier_id', $city->id)->first();
         $price = $amount * ($sell->price);
         if ($sell->stocks > 0) {
             if ($teamCurr >= $price) {
                 $sell->stocks -= $amount;
                 $team->currency -= $price;
-                $team->fulfill_demands += $amount;
                 $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->get();
                 if(count($invSearch) < 1){
                     DB::table('inventories')->insert([
