@@ -114,9 +114,8 @@ $t = time();
                             @endif
                             <td class="align-middle">
                                 @php
-                                    $seconds = $t - strtotime($arrOfBT[0][$i]->arrived_at);
                                     $valid = true;
-                                    if ($seconds > 3600) {
+                                    if ($arrOfBT[0][$i]->status == 'arrived') {
                                         $minutes = 'Sudah ';
                                         $seconds = 'Sampai';
                                         $valid = false;

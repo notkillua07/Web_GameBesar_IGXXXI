@@ -137,7 +137,7 @@ class DistribusiController extends Controller
                 $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken) + $addTime));
                 $buyTrans->sent_at = $sendTime;
                 $buyTrans->arrived_at = $arrTime;
-                $buyTrans->status = 'arrived';
+                $buyTrans->status = 'sending';
                 $buyTrans->save();
                 $inv->amount = 0;
                 $inv->save();

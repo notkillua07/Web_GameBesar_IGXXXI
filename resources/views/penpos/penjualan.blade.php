@@ -60,7 +60,7 @@
                 <button type="button" class="btn btn-primary" onclick="sellInv()">Konfirmasi</button>
 
                  {{-- Button Distribusi --}}
-                 <a href="{{ __('') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
+                 <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
 
             </div>
         </div>

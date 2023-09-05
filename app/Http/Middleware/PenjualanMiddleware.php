@@ -17,7 +17,7 @@ class PenjualanMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == "4") {
+        if (Auth::user()->role == "4" || Auth::user()->role == "2" || Auth::user()->role == "1") {
             return $next($request);
         }else{
             return redirect()->back();
