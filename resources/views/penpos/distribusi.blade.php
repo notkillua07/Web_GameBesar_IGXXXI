@@ -1,20 +1,13 @@
 @extends('layouts.app')
-<html>
-
 <head>
     <title>IGXXXI - Penpos Distribusi</title>
-    @section('styles')
-        <style>
-
-        </style>
-    @endsection
 </head>
 
 @section('content')
     <div class="card m-auto mt-5 shadow-sm" style="height:50em;width:40em;">
 
         {{-- Pos Distribusi --}}
-        <h1 class="card-header text-center" style="font-weight:bold;background-color:#E1AC61;color:#58431F;"><i
+        <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;"><i
                 class="bi bi-truck"></i> Pos Distribusi</h1>
         <div class="card-body">
             <div class="team-select-section">
@@ -248,5 +241,3 @@
         }
     </script>
 @endsection
-
-</html>

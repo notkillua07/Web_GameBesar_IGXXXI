@@ -9,7 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
@@ -51,7 +50,6 @@
     </style>
 </head>
 <body>
-    
     <div id="app">
         {{-- Navbar --}}
         <nav class="navbar navbar-expand-sm shadow-sm">
@@ -73,13 +71,17 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+
+                        {{-- Note dari wensel: sing guest2 ini mau tak ilangi sakjane, mek e gtw, penting opo gk e iki? wkwkwk --}}
+
+                        {{-- @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}</a>
                                 </li>
                             @endif
-                        @endguest
+                        @endguest --}}
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}</a>
                         </li>

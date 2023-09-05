@@ -1,4 +1,7 @@
 @extends('layouts.app')
+<head>
+    <title>IGXXXI - Penpos Hutang</title>
+</head>
 @section('styles')
     {{--  Toaster Sweet Alert  --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -6,7 +9,7 @@
 
 @section('content')
     <div class="card m-auto mt-5 shadow-sm" style="height:20em;width:25em;">
-        <h1 class="card-header text-center" style="font-weight:bold;background-color:#E1AC61;color:#58431F;">
+        <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;">
             <i class="bi bi-bank"></i> Pos Hutang
         </h1>
         <div class="card-body">
@@ -26,9 +29,7 @@
                     </select>
                 </div>
 
-
                 {{-- Input Jawaban Benar --}}
-
                 <div class="form-outline mb-3">
                     <label class="form-label" for="totalRight"><i class="bi bi-check-square-fill"></i> Jawaban Benar</label>
                     <input type="number" id="totalRight" class="form-control w-25" min="1" max="10" required>

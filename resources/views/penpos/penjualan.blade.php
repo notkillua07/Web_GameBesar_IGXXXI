@@ -1,16 +1,11 @@
 @extends('layouts.app')
-<!DOCTYPE html>
-<html>
-
 <head>
     <title>IGXXXI - Penpos Penjualan</title>
-    @section('styles')
-    @endsection
 </head>
 
 @section('content')
     <div class="card m-auto mt-5 shadow-sm" style="height:35em;width:30em;">
-        <h1 class="card-header text-center" style="font-weight:bold;background-color:#E1AC61;color:#58431F;"><i
+        <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;"><i
                 class="bi bi-cart4"></i></i> Pos Penjualan</h1>
         <div class="card-body">
             <div class="team-select-section">
@@ -141,5 +136,3 @@
         }
     </script>
 @endsection
-
-</html>

@@ -26,6 +26,8 @@ Route::group(
 
 );
 
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/control_admin', [App\Http\Controllers\ControlAdminController::class, 'index'])->name('control_admin');
 
 Route::group(
     ['middleware' => ['auth', 'penjualan']],
