@@ -19,11 +19,13 @@
             {{-- Input Pilih Tim --}}
             <div class="form-outline mb-3">
                 <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><br>
-                <select name="team" id="team" class="form-select select2" required>
-                    <option value="-" selected disabled>- Pilih Tim -</option>
-                    @for ($i = 1; $i <= 7; $i++)
-                        <option value="">Tim <?= $i ?> </option>
-                    @endfor
+                <select name="team" id="team" class="form-select select2 mb-3" onchange="changeTeam()">
+                    <option value="-" selected disabled>- Pilih Team -</option>
+                    @foreach ($teams as $team)
+                        <option value="{{ $team->name }}" id="{{ $team->name }}">
+                            {{ $team->name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
