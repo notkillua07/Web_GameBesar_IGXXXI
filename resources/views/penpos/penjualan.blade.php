@@ -4,7 +4,7 @@
 </head>
 
 @section('content')
-    <div class="card m-auto mt-5 shadow-sm" style="height:35em;width:30em;">
+    <div class="card m-auto mt-5 shadow" style="height:35em;width:30em;">
         <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;"><i
                 class="bi bi-cart4"></i></i> Pos Penjualan</h1>
         <div class="card-body">
@@ -52,7 +52,7 @@
                 </div>
 
                 {{-- Button Submit --}}
-                <button type="button" class="btn btn-primary" onclick="sellInv()">Konfirmasi</button>
+                <button type="button" class="btn btn-primary" onclick="sellInv()"><i class="bi bi-check-square-fill"></i> Konfirmasi</button>
 
                  {{-- Button Distribusi --}}
                  <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
