@@ -26,10 +26,10 @@
 
                 {{-- Pilih Kota Tujuan --}}
                 <div class="form-outline mb-3">
-                    <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Tujuan</label><br>
+                    <label class="form-label" for="team"><i class="bi bi-building"></i> Kota Supplier</label><br>
                     <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getCitySupply()"
                         required>
-                        <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
+                        <option value="-" selected disabled>- Pilih Kota Supplier -</option>
                         @foreach ($cities as $city)
                             <option value="{{ $city->city }}" id="{{ $city->city }}">
                                 {{ $city->city }}
