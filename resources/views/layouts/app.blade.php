@@ -83,7 +83,16 @@
                         @endguest --}}
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}</a>
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                        <i class="bi bi-box-arrow-left"></i></a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                            {{-- <a class="nav-link" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}</a> --}}
                         </li>
                     </ul>
                 </div>
