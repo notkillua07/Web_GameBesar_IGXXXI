@@ -6,7 +6,7 @@
 
 @section('content')
     {{-- Outer Card --}}
-    <div class="card mt-3 mx-3">
+    <div class="card shadow mt-3 mx-3">
 
         {{-- Outer Card Head --}}
         <div class="card-header text-center" style="background-color:#7DC1E3;">

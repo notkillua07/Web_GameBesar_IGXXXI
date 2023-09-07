@@ -6,7 +6,7 @@
 
 @section('content')
     {{-- Control Area --}}
-    <div class="card mt-3 mx-auto text-center" style="height: 20em; width:25em">
+    <div class="card shadow mt-3 mx-auto text-center" style="height: 20em; width:25em">
         <div class="card-header text-center" style="background-color:#7DC1E3;">
             <h1 style="font-weight:bold;color:#ffffff;"><i class="bi bi-joystick"></i></i> Control Area</h1>
         </div>

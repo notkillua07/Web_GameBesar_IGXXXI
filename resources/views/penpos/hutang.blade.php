@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="card m-auto mt-5 shadow-sm" style="height:20em;width:25em;">
+    <div class="card m-auto mt-5 shadow" style="height:20em;width:25em;">
         <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;">
             <i class="bi bi-bank"></i> Pos Hutang
         </h1>

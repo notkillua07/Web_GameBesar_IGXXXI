@@ -4,7 +4,7 @@
 </head>
 
 @section('content')
-    <div class="card m-auto mt-5 shadow-sm" style="height:35em;width:30em;">
+    <div class="card m-auto mt-5 shadow" style="height:35em;width:30em;">
         <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;"><i
                 class="bi bi-cart4"></i></i> Pos Pembelian</h1>
         <div class="card-body">
@@ -12,7 +12,14 @@
 
                 {{-- Pilih Tim --}}
                 <div class="form-outline mb-3">
-                    <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label><p>Currency: <span id="currency"></span></p>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="team"><i class="bi bi-people-fill"></i> Pilih Tim</label>
+                        </div>
+                        <div class="col">
+                            <p><i class="bi bi-cash-coin"></i> Currency: <span id="currency"></span></p>
+                        </div>
+                    </div>
                     <select name="team" id="team" class="form-select select2 mb-3" onchange="changeTeam()">
                         <option value="-" selected disabled>- Pilih Team -</option>
                         @foreach ($teams as $team)
@@ -60,8 +67,10 @@
                 </div>
 
                 {{-- Button Submit --}}
-                <div class="form-outline">
-                    <button type="button" class="btn btn-primary" id="submit" onclick="buySupply()">Konfirmasi</button>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn btn-primary" id="submit" onclick="buySupply()"><i class="bi bi-check-square-fill"></i> Konfirmasi</button>
+                    </div>
                 </div>
 
             </div>
