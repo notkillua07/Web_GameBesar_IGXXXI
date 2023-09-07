@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <head>
     <title>IGXXXI - Penpos Distribusi</title>
 </head>
@@ -26,12 +27,28 @@
                         </select>
                     </div>
 
+                    {{-- Kota Tujuan --}}
+                    <div class="col-md-6">
+                        <div class="form-outline">
+                            <label class="form-label" for="kotaTujuan"><i class="bi bi-building"></i> Kota
+                                Tujuan</label><br>
+                            <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3"
+                                onchange="getTeamInv()" required>
+                                <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city->id }}" id="{{ $city->id }}">
+                                        {{ $city->city }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     {{-- Pilih Barang --}}
                     <div class="col-md-6">
                         <label class="form-label" for="team"><i class="bi bi-box-seam-fill"></i> Pilih
                             Barang</label><br>
-                        <select name="barang" id="barang" class="form-select select2 mb-3" onchange=""
-                            required>
+                        <select name="barang" id="barang" class="form-select select2 mb-3" onchange="" required>
                             <option value="-" selected disabled>- Pilih Barang -</option>
                         </select>
                     </div>
@@ -53,10 +70,10 @@
                     </div>
 
                     {{-- Pilih Jenis Transportasi --}}
-                    <div class="col-md-6">
-                        <label class="form-label" for="team"><i class="bi bi-globe"></i> Jenis Jasa Transportasi</label><br>
-                        <select name="jenisJasa" id="jenisJasa" class="form-select select2 mb-3" onchange=""
-                            required>
+                    <div class="col-12">
+                        <label class="form-label" for="team"><i class="bi bi-globe"></i> Jenis Jasa
+                            Transportasi</label><br>
+                        <select name="jenisJasa" id="jenisJasa" class="form-select select2 mb-3" onchange="" required>
                             <option value="-" selected disabled>- Pilih Jenis Jasa -</option>
                         </select>
                     </div>
@@ -72,44 +89,29 @@
 
             {{-- Button Pengecekan Muatan --}}
             <div class="col-12">
-                <button type="button" class="btn btn-primary" id="btnCekMuatan" onclick="cekMuatan()"><i class="bi bi-search"></i> Cek
+                <button type="button" class="btn btn-primary" id="btnCekMuatan" onclick="cekMuatan()"><i
+                        class="bi bi-search"></i> Cek
                     Muatan</button>
 
                 <script></script>
             </div>
             {{-- Pilih Kota Tujuan --}}
             <div class="col-12">
-                <div class="form-outline mb-3 mt-3">
-                    <label class="form-label" for="kotaTujuan"><i class="bi bi-building"></i> Kota Tujuan</label><br>
-                    <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3" onchange="getTeamInv()"
-                        required>
-                        <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->id }}" id="{{ $city->id }}">
-                                {{ $city->city }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+
             </div>
             </form>
-            <div class="row">
-                {{-- Input Berapa Kali Kirim --}}
-                <div class="col">
-                    <div class="form-outline mb-3">
-                        <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Frekuensi
-                            Pengiriman</label>
-                        <input type="number" id="typeNumber" class="form-control w-25" min="1" max="10" />
-                    </div>
+            <div class="row mt-5 justify-content-center">
 
-                    {{-- Button Submit --}}
-                    <button type="button" class="btn btn-primary" onclick="sendMuatan()"><i class="bi bi-send-fill"></i> Kirim</button>
-                    
-                    {{-- Button Penjualan --}}
-                    <a href="{{ __('/penjualan') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Penjualan</a>
-                </div>
+                {{-- Button Submit --}}
+                <button type="button" class="btn btn-primary mb-2" onclick="sendMuatan()" style="width: 20em"><i
+                        class="bi bi-send-fill"></i> Kirim</button>
+
+                {{-- Button Penjualan --}}
+                <a href="{{ __('/penjualan') }}" class="btn btn-info" role="button" style="width: 20em"><i
+                        class="bi bi-signpost-fill"></i> Ke Penjualan</a>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 
