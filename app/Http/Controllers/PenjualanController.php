@@ -70,9 +70,9 @@ class PenjualanController extends Controller
             $t = time();
             if (strtotime($bt->arrived_at) < $t) {
                 $profit = ($bt->amount * 100) * $buy->price;
-                $bt->demand_fulfilled += $bt->amount * 100;
+                $bt->demand_fulfilled = ($bt->amount) * 100;
                 $team->currency += $profit;
-                $buy->demands -= $bt->amount * 100;
+                $buy->demands -= ($bt->amount) * 100;
                 $bt->status = "sold";
                 $buy->save();
                 $bt->save();

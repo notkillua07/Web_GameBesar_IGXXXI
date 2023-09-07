@@ -69,24 +69,22 @@ class LoginController extends Controller
             if (Auth::user()->role == "1") {
 
                 return redirect()->intended('pembelian');
-
             } else if (Auth::user()->role == "4") {
 
                 return redirect()->intended('penjualan');
-
             } else if (Auth::user()->role == "2") {
 
                 return redirect()->intended('distribusi');
-                
             } else if (Auth::user()->role == "3") {
 
                 return redirect()->intended('hutang');
-
-            }  else if (Auth::user()->role == "5") {
+            } else if (Auth::user()->role == "5") {
 
                 return redirect()->intended('dashboard');
-                
-            } 
+            } else if (Auth::user()->role == "0") {
+
+                return redirect()->intended('admin');
+            }
         }
 
         return back()->with('loginError', 'Login Gagal, kombinasi username dan password salah!');
