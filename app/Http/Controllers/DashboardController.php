@@ -16,20 +16,23 @@ class DashboardController extends Controller
         $user = auth()->user();
         $tim = Team::where('name', $user->name)->first();
         $arrOfInv = Inventory::where('team_id', $tim->id)->get();
-        $arrOfBT = [];
+        $arrOfBT = array();
         foreach ($arrOfInv as $inv) {
             $bts = BuyTransaction::where('inv_id', $inv->id)->get();
-            foreach ($bts as $bt) {
-                $seconds = $t - strtotime($bt->arrived_at);
-                if ($seconds >= 0) {
-                    if ($bt->status == "sending") {
-                        $bt->status = "arrived";
-                        $bt->save();
+            if($bts != null){
+                foreach ($bts as $bt) {
+                    $seconds = $t - strtotime($bt->arrived_at);
+                    if ($seconds >= 0) {
+                        if ($bt->status == "sending") {
+                            $bt->status = "arrived";
+                            $bt->save();
+                        }
                     }
+                    array_push($arrOfBT, $bt);
                 }
-                array_push($arrOfBT, $bt);
             }
         }
+        // dd($arrOfBT);
         return view('peserta.dashboard', compact('tim', 'arrOfBT'));
     }
 }

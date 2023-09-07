@@ -3,6 +3,7 @@
 date_default_timezone_set('Asia/Jakarta');
 $t = time();
 ?>
+
 <head>
     <title>Dashboard</title>
 </head>
@@ -36,84 +37,83 @@ $t = time();
             </thead>
 
             <tbody>
-                {{-- <p>{{print_r($arrOfBT[0]->expedition_id)}}</p> --}}
-                @if ($arrOfBT == null)
-                @else
-                    @for ($i = 0; $i < count($arrOfBT[0]); $i++)
+                {{-- <p>{{count($arrOfBT)}}</p> --}}
+                @if (count($arrOfBT) != 0)
+                    @for ($i = 0; $i < count($arrOfBT); $i++)
                         <tr>
                             <td class="align-middle"><b>{{ $i + 1 }}</b></td>
-                            @if ($arrOfBT[0][$i]->expedition_id == '1')
+                            @if ($arrOfBT[$i]->expedition_id == '1')
                                 <td class="align-middle">Cargo</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '2')
+                            @elseif ($arrOfBT[$i]->expedition_id == '2')
                                 <td class="align-middle">Cargo</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '3')
+                            @elseif ($arrOfBT[$i]->expedition_id == '3')
                                 <td class="align-middle">Cargo</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '4')
+                            @elseif ($arrOfBT[$i]->expedition_id == '4')
                                 <td class="align-middle">Si Fast - Darat</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '5')
+                            @elseif ($arrOfBT[$i]->expedition_id == '5')
                                 <td class="align-middle">Si Fast - Darat</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '6')
+                            @elseif ($arrOfBT[$i]->expedition_id == '6')
                                 <td class="align-middle">Si Fast - Darat</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '7')
+                            @elseif ($arrOfBT[$i]->expedition_id == '7')
                                 <td class="align-middle">Si Fast - Laut</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '8')
+                            @elseif ($arrOfBT[$i]->expedition_id == '8')
                                 <td class="align-middle">Si Fast - Laut</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '9')
+                            @elseif ($arrOfBT[$i]->expedition_id == '9')
                                 <td class="align-middle">Si Fast - Laut</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '10')
+                            @elseif ($arrOfBT[$i]->expedition_id == '10')
                                 <td class="align-middle">Jalur Kurir - Darat</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '11')
+                            @elseif ($arrOfBT[$i]->expedition_id == '11')
                                 <td class="align-middle">Jalur Kurir - Darat</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '12')
+                            @elseif ($arrOfBT[$i]->expedition_id == '12')
                                 <td class="align-middle">Jalur Kurir - Darat</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '13')
+                            @elseif ($arrOfBT[$i]->expedition_id == '13')
                                 <td class="align-middle">Jalur Kurir - Laut</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '14')
+                            @elseif ($arrOfBT[$i]->expedition_id == '14')
                                 <td class="align-middle">Jalur Kurir - Laut</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '15')
+                            @elseif ($arrOfBT[$i]->expedition_id == '15')
                                 <td class="align-middle">Jalur Kurir - Laut</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '16')
+                            @elseif ($arrOfBT[$i]->expedition_id == '16')
                                 <td class="align-middle">JNA - Darat</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '17')
+                            @elseif ($arrOfBT[$i]->expedition_id == '17')
                                 <td class="align-middle">JNA - Darat</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '18')
+                            @elseif ($arrOfBT[$i]->expedition_id == '18')
                                 <td class="align-middle">JNA - Darat</td>
                                 <td class="align-middle">Bandung</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '19')
+                            @elseif ($arrOfBT[$i]->expedition_id == '19')
                                 <td class="align-middle">JNA - Laut</td>
                                 <td class="align-middle">Surabaya</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '20')
+                            @elseif ($arrOfBT[$i]->expedition_id == '20')
                                 <td class="align-middle">JNA - Laut</td>
                                 <td class="align-middle">Semarang</td>
-                            @elseif ($arrOfBT[0][$i]->expedition_id == '21')
+                            @elseif ($arrOfBT[$i]->expedition_id == '21')
                                 <td class="align-middle">JNA - Laut</td>
                                 <td class="align-middle">Bandung</td>
                             @endif
                             <td class="align-middle">
                                 @php
                                     $valid = true;
-                                    if ($arrOfBT[0][$i]->status == 'arrived') {
+                                    if ($arrOfBT[$i]->status == 'arrived') {
                                         $minutes = 'Sudah ';
                                         $seconds = 'Sampai';
                                         $valid = false;
-                                    } elseif ($arrOfBT[0][$i]->status == 'sold') {
+                                    } elseif ($arrOfBT[$i]->status == 'sold') {
                                         $minutes = 'Sudah ';
                                         $seconds = 'Dijual';
                                         $valid = false;
