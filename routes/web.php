@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
 Route::group(
     ['middleware' => ['auth', 'admin']],
     function () {
@@ -26,7 +28,6 @@ Route::group(
         Route::post('/admin-ganti', [App\Http\Controllers\AdminController::class, 'changeMonth'])->name('admin.bulan');
         Route::post('/admin-inf', [App\Http\Controllers\AdminController::class, 'inflation'])->name('admin.inflasi');
         Route::post('/admin-get', [App\Http\Controllers\AdminController::class, 'getTeam'])->name('admin.getTeam');
-        Route::get('/control_admin', [App\Http\Controllers\ControlAdminController::class, 'index'])->name('control_admin');
     }
 );
 

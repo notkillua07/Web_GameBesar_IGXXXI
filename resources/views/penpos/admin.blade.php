@@ -34,11 +34,19 @@
                 <div class="card-header px-4" style="background-color:#7DC1E3;">
                     <div class="row p-auto pt-2">
                         <div class="col-sm">
-                            <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-coin"></i> Koin</h1>
+                            <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-calculator"></i> Hutang</h1>
                         </div>
                         <div class="col-sm pe-5">
                             <h1 class="text-end" id="koin" style="color:#ffffff;">
-                                0
+                                {{$team->debt}}
+                            </h1>
+                        </div>
+                        <div class="col-sm">
+                            <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-coin"></i> Total Dana</h1>
+                        </div>
+                        <div class="col-sm pe-5">
+                            <h1 class="text-end" id="koin" style="color:#ffffff;">
+                                {{$team->currency}}
                             </h1>
                         </div>
                         <div class="col-sm ps-5">
@@ -46,7 +54,7 @@
                         </div>
                         <div class="col-sm">
                             <h1 class="text-end" id="demands" style="color:#ffffff;">
-                                0
+                                {{$team->fulfill_demands}}
                             </h1>
                         </div>
                     </div>
@@ -79,9 +87,9 @@
             {{-- <a href="#" class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em"><i
                     class="bi bi-calendar"></i> GANTI BULAN</a><br> --}}
             <button class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em" onclick="gantiBulan()"
-                id="submitBulan"><i class="bi bi-calendar"></i>GANTI BULAN</button><br>
+                id="submitBulan"><i class="bi bi-calendar"></i> GANTI BULAN</button><br>
             <button class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em" onclick="inflasi()" id="submitInf"><i
-                    class="bi bi-graph-up-arrow"></i>INFLASI</button><br>
+                    class="bi bi-graph-up-arrow"></i> INFLASI</button><br>
             {{-- <a href="#" class="btn btn-lg btn-danger btn-primary mb-4" style="width: 10em"><i
                     class="bi bi-graph-up-arrow"></i> INFLASI</a> --}}
             <p class="text-danger"><i class="bi bi-radioactive"></i> Danger! Please Proceed with Caution. <i
