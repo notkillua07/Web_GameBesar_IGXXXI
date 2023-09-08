@@ -120,36 +120,41 @@ class DistribusiController extends Controller
         $team = Team::where('id', $inv->team_id)->first();
         $session = DB::table('sessions')->first();
         $buy = Buy::where('item_id', $inv->item_id)->where('supplier_id', $expedition->dest_id)->where('month', $session->month)->first();
-        if (($inv->amount/100) <= $expedition->capacity) {
-            // var_dump($team->currency, $expedition->cost, $mult);
-            if (($team->currency - ($expedition->cost) * $mult) >= 0) {
-                $amount = ($inv->amount / 100) * $defect;
-                $buyTrans = new BuyTransaction();
-                $buyTrans->expedition_id = $expedition->id;
-                $buyTrans->inv_id = $inv->id;
-                $buyTrans->buy_id = $buy->id;
-                $buyTrans->amount = $amount;
-                $buyTrans->demand_fulfilled = 0;
-                $buyTrans->cap_left = $amount / $expedition->capacity;
-                date_default_timezone_set("Asia/Jakarta");
-                $t = time();
-                $sendTime = (date("Y-m-d H:i:s", $t));
-                $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken) + $addTime));
-                $buyTrans->sent_at = $sendTime;
-                $buyTrans->arrived_at = $arrTime;
-                $buyTrans->status = 'sending';
-                $buyTrans->save();
-                $inv->amount = 0;
-                $inv->save();
-                $team->currency = ($team->currency - ($expedition->cost) * $mult);
-                $team->save();
-                $msg = "Successfully sent will arrive at " . (date("H:i:s", $t + ($expedition->time_taken) + $addTime));
+        if($inv->amount != 0){
+            if (($inv->amount/100) <= $expedition->capacity) {
+                // var_dump($team->currency, $expedition->cost, $mult);
+                if (($team->currency - ($expedition->cost) * $mult) >= 0) {
+                    $amount = ($inv->amount / 100) * $defect;
+                    $buyTrans = new BuyTransaction();
+                    $buyTrans->expedition_id = $expedition->id;
+                    $buyTrans->inv_id = $inv->id;
+                    $buyTrans->buy_id = $buy->id;
+                    $buyTrans->amount = $amount;
+                    $buyTrans->demand_fulfilled = 0;
+                    $buyTrans->cap_left = $amount / $expedition->capacity;
+                    date_default_timezone_set("Asia/Jakarta");
+                    $t = time();
+                    $sendTime = (date("Y-m-d H:i:s", $t));
+                    $arrTime = (date("Y-m-d H:i:s", $t + ($expedition->time_taken) + $addTime));
+                    $buyTrans->sent_at = $sendTime;
+                    $buyTrans->arrived_at = $arrTime;
+                    $buyTrans->status = 'sending';
+                    $buyTrans->save();
+                    $inv->amount = 0;
+                    $inv->save();
+                    $team->currency = ($team->currency - ($expedition->cost) * $mult);
+                    $team->save();
+                    $msg = "Successfully sent will arrive at " . (date("H:i:s", $t + ($expedition->time_taken) + $addTime));
+                } else {
+                    $msg = "You don't have enough currency to send";
+                }
             } else {
-                $msg = "You don't have enough currency to send";
+                $msg = "Capacity isn't enough";
             }
-        } else {
-            $msg = "Capacity isn't enough";
+        }else{
+            $msg = "Cannot send 0 amount";
         }
+        
         return response()->json(array(
             'msg' => $msg,
         ), 200);

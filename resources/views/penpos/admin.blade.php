@@ -37,7 +37,8 @@
                             <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-calculator"></i> Hutang</h1>
                         </div>
                         <div class="col-sm pe-3 border-end border-2 border-white pt-2">
-                            <h1 class="text-end pe-2 ps-2" id="koin" style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
+                            <h1 class="text-end pe-2 ps-2" id="koin"
+                                style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
                                 30000
                             </h1>
                         </div>
@@ -45,7 +46,8 @@
                             <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-coin"></i> Total Dana</h1>
                         </div>
                         <div class="col-sm pe-3 pt-2 border-end border-2 border-white">
-                            <h1 class="text-end pe-2 ps-2" id="hutang" style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
+                            <h1 class="text-end pe-2 ps-2" id="hutang"
+                                style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
                                 0
                             </h1>
                         </div>
@@ -53,7 +55,8 @@
                             <h1 class="text-left" style=";color:#ffffff;"><i class="bi bi-boxes"></i> Demand</h1>
                         </div>
                         <div class="col-sm pt-2">
-                            <h1 class="text-end pe-2 ps-2" id="demands" style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
+                            <h1 class="text-end pe-2 ps-2" id="demands"
+                                style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
                                 0
                             </h1>
                         </div>
@@ -65,7 +68,6 @@
                             <th scope="col">No.</th>
                             <th scope="col">Nama Layanan</th>
                             <th scope="col">Kota Tujuan</th>
-                            <th scope="col">Sisa Waktu</th>
                             <th scope="col">Status</th>
                             <th scope="col">Kapasitas Terisi</th>
                         </tr>
@@ -177,7 +179,7 @@
                     $('#koin').text(data.team.currency);
                     $('#demand').text(data.team.demand_fulfilled);
                     $('#hutang').text(data.team.debt);
-                    
+
                     if (data.arrOfBT.length != 0) {
                         for (let i = 0; i < data.arrOfBT.length; i++) {
                             let content = ""
@@ -227,26 +229,13 @@
                             }
 
                             if (data.arrOfBT[i].status == 'arrived') {
-                                content += "<td> 00:00 </td> <td>Sudah Sampai</td>";
+                                content += "<td>Sudah Sampai</td>";
                             } else if (data.arrOfBT[i].status == 'sold') {
-                                content += "<td> 00:00 </td> <td>Sudah Dijual</td>";
+                                content += "<td>Sudah Dijual</td>";
                             } else if (data.arrOfBT[i].status == 'sending') {
-                                var dtString = data.arrOfBT[i].arrived_at;
-                                var curTime = new Date();
-                                var timeDiff = curTime - dtString;
-
-                                var seconds = Math.floor(timeDiff / 1000);
-                                var minutes = Math.floor(timeDiff / (1000 * 60));
-                                if (seconds < 10) {
-                                    seconds = "0" + seconds;
-                                }
-                                if (minutes < 10) {
-                                    minutes = "0" + minutes;
-                                }
-                                content += "<td> " + minutes + ":" +
-                                    seconds +" </td> <td>Dalam Pengiriman</td>";
+                                seconds + " </td> <td>Dalam Pengiriman</td>";
                             }
-                            content+="<td> "+data.arrOfBT[i].cap_left+" </td>";
+                            content += "<td> " + data.arrOfBT[i].cap_left + " </td>";
                             table.innerHTML += "<tr>";
                             table.innerHTML += content;
                             table.innerHTML += "</tr>";

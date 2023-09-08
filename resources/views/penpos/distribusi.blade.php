@@ -34,7 +34,7 @@
                                 Tujuan</label><br>
                             <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3"
                                 onchange="getTeamInv()" required>
-                                <option value="-" selected disabled>- Pilih Kota Tujuan -</option>
+                                <option value="-" selected disabled>- Pilih Kota Asal -</option>
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->id }}" id="{{ $city->id }}">
                                         {{ $city->city }}
@@ -165,7 +165,7 @@
                     alert(data.msg);
                 },
                 error: function(data) {
-                    alert("Isikan Kota pengiriman!");
+                    alert("Isikan Kota asal!");
                 }
             });
         }
