@@ -38,15 +38,15 @@
                         </div>
                         <div class="col-sm pe-5">
                             <h1 class="text-end" id="koin" style="color:#ffffff;">
-                                {{$team->debt}}
+                                0
                             </h1>
                         </div>
                         <div class="col-sm">
                             <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-coin"></i> Total Dana</h1>
                         </div>
                         <div class="col-sm pe-5">
-                            <h1 class="text-end" id="koin" style="color:#ffffff;">
-                                {{$team->currency}}
+                            <h1 class="text-end" id="hutang" style="color:#ffffff;">
+                                0
                             </h1>
                         </div>
                         <div class="col-sm ps-5">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-sm">
                             <h1 class="text-end" id="demands" style="color:#ffffff;">
-                                {{$team->fulfill_demands}}
+                                0
                             </h1>
                         </div>
                     </div>
@@ -176,6 +176,7 @@
                 success: function(data) {
                     $('#koin').text(data.team.currency);
                     $('#demand').text(data.team.demand_fulfilled);
+                    $('#hutang').text(data.team.debt);
                     
                     if (data.arrOfBT.length != 0) {
                         for (let i = 0; i < data.arrOfBT.length; i++) {
