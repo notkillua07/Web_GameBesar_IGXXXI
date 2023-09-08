@@ -83,7 +83,7 @@ class AdminController extends Controller
         $teams = Team::all();
         $msg ="Inflation Failed";
         foreach($teams as $team){
-            $team->currency = $team->currency * 0.8;
+            $team->currency = $team->currency * 0.6;
             $msg = "Inflation success";
         }
         return response()->json(array(

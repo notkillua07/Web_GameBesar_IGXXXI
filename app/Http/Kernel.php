@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'distribusi' => \App\Http\Middleware\DistribusiMiddleware::class,
         'hutang' => \App\Http\Middleware\HutangMiddleware::class,
         'dashboard' => \App\Http\Middleware\DashboardMiddleware::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 }

@@ -61,20 +61,92 @@
                         </tr>
                     </thead>
                 </table>
-            
+
             </div>
         </div>
     </div>
 
-     {{-- Control Area --}}
-     <div class="card mt-3 mx-auto text-center" style="height: 20em; width:25em">
+    {{-- Control Area --}}
+    <div class="card mt-3 mx-auto text-center" style="height: 20em; width:25em">
         <div class="card-header text-center" style="background-color:#7DC1E3;">
             <h1 style="font-weight:bold;color:#ffffff;"><i class="bi bi-joystick"></i></i> Control Area</h1>
         </div>
         <div class="card-body">
-            <a href="#" class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em"><i class="bi bi-calendar"></i> GANTI BULAN</a><br>
-            <a href="#" class="btn btn-lg btn-danger btn-primary mb-4" style="width: 10em"><i class="bi bi-graph-up-arrow"></i> INFLASI</a>
-            <p class="text-danger"><i class="bi bi-radioactive"></i> Danger! Please Proceed with Caution. <i class="bi bi-radioactive"></i></p>
+            {{-- <a href="#" class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em"><i
+                    class="bi bi-calendar"></i> GANTI BULAN</a><br> --}}
+            <button class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em" onclick="gantiBulan()"
+                id="submitBulan"><i class="bi bi-calendar"></i>GANTI BULAN</button><br>
+            <button class="btn btn-lg btn-primary btn-danger mb-4" style="width: 10em" onclick="inflasi()"
+                id="submitBulan"><i class="bi bi-graph-up-arrow"></i>INFLASI</button><br>
+            {{-- <a href="#" class="btn btn-lg btn-danger btn-primary mb-4" style="width: 10em"><i
+                    class="bi bi-graph-up-arrow"></i> INFLASI</a> --}}
+            <p class="text-danger"><i class="bi bi-radioactive"></i> Danger! Please Proceed with Caution. <i
+                    class="bi bi-radioactive"></i></p>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2();
+
+            window.setTimeout(function() {
+                $(".alert-danger").fadeTo(1000, 0).slideUp(800, function() {
+                    $(this).remove();
+                });
+            }, 2000);
+        });
+
+        $('#submitBulan').click(function() {
+            $('#submitBulan').attr('disabled', 'disabled');
+            $('#submitBulan').addClass('btn-submit-disabled');
+            setTimeout(function() {
+                $('#submitBulan').removeAttr('disabled');
+                $('#submitBulan').removeClass('btn-submit-disabled');
+            }, 2000);
+        });
+
+        $('#submit').click(function() {
+            $('#submit').attr('disabled', 'disabled');
+            $('#submit').addClass('btn-submit-disabled');
+            setTimeout(function() {
+                $('#submit').removeAttr('disabled');
+                $('#submit').removeClass('btn-submit-disabled');
+            }, 2000);
+        });
+
+
+        const gantiBulan = () => {
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.bulan') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                },
+                success: function(data) {
+                    alert(data.msg);
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        const inflasi = () => {
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.inflasi') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                },
+                success: function(data) {
+                    alert(data.msg);
+                },
+                error: function(data) {
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 @endsection
