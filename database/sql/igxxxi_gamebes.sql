@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Sep 2023 pada 14.13
+-- Waktu pembuatan: 08 Sep 2023 pada 07.30
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -49,7 +49,7 @@ INSERT INTO `buys` (`id`, `item_id`, `supplier_id`, `price`, `month`, `demands`,
 (4, 1, 1, 68.6, 2, 50000, NULL, NULL),
 (5, 2, 1, 45, 2, 50000, NULL, NULL),
 (6, 3, 1, 41, 2, 50000, NULL, NULL),
-(7, 1, 1, 47, 3, 50000, NULL, NULL),
+(7, 1, 1, 47, 3, 50000, NULL, '2023-09-08 02:10:30'),
 (8, 2, 1, 68.6, 3, 50000, NULL, NULL),
 (9, 3, 1, 41, 3, 50000, NULL, NULL),
 (10, 4, 1, 42, 1, 50000, NULL, NULL),
@@ -337,9 +337,9 @@ CREATE TABLE `sells` (
 --
 
 INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `stocks`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 49, 135000, NULL, '2023-09-06 07:11:32'),
+(1, 1, 1, 49, 135000, NULL, '2023-09-07 19:00:26'),
 (2, 2, 1, 47, 135000, NULL, NULL),
-(3, 3, 1, 46, 135000, NULL, NULL),
+(3, 3, 1, 46, 135000, NULL, '2023-09-07 19:11:22'),
 (4, 4, 1, 45, 135000, NULL, NULL),
 (5, 5, 1, 50, 135000, NULL, NULL),
 (6, 6, 1, 51, 135000, NULL, NULL),
@@ -444,38 +444,39 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(8, 'Affandra', 0, 0, 0, 30000, NULL, NULL),
-(9, 'Spill The Three', 0, 0, 0, 30000, NULL, NULL),
-(10, 'Beauty and Brain', 0, 0, 0, 30000, NULL, NULL),
-(11, 'Tim AJA', 0, 0, 0, 30000, NULL, NULL),
-(12, 'Tim Pehh', 0, 0, 0, 30000, NULL, NULL),
-(13, 'Tim Cheese', 0, 0, 0, 30000, NULL, NULL),
-(14, 'Tim Edu', 0, 0, 0, 30000, NULL, NULL),
-(15, 'Vander', 0, 0, 0, 30000, NULL, NULL),
-(16, 'Twinkle Triad', 0, 0, 0, 30000, NULL, NULL),
-(17, 'Paseo', 0, 0, 0, 30000, NULL, NULL),
-(18, 'Telor Sakti', 0, 0, 0, 30000, NULL, NULL),
-(19, 'Telor Dadar', 0, 0, 0, 30000, NULL, NULL),
-(20, 'Business Proposal 3.0', 0, 0, 0, 30000, NULL, NULL),
-(21, 'Anak DKV nyasar', 0, 0, 0, 30000, NULL, NULL),
-(22, 'Sinlucky', 0, 0, 0, 30000, NULL, NULL),
-(23, 'CHEERS', 0, 0, 0, 30000, NULL, NULL),
-(24, 'KARUNGGONI', 0, 0, 0, 30000, NULL, NULL),
-(25, 'HOKAY', 0, 0, 0, 30000, NULL, NULL),
-(26, 'Klein and Friends', 0, 0, 0, 30000, NULL, NULL),
-(27, 'Free Willy', 0, 0, 0, 30000, NULL, NULL),
-(28, 'JCA Glory', 0, 0, 0, 30000, NULL, NULL),
-(29, 'SMH', 0, 0, 0, 30000, NULL, NULL),
-(30, 'Clavenfore', 0, 0, 0, 30000, NULL, NULL),
-(31, 'Smala', 0, 0, 0, 30000, NULL, NULL),
-(32, 'Macgyver', 0, 0, 0, 30000, NULL, NULL),
-(33, 'All in Charizz', 0, 0, 0, 30000, NULL, NULL),
-(34, 'CLAVE', 0, 0, 0, 30000, NULL, NULL),
-(35, 'DURIAN MUSANGKING', 0, 0, 0, 30000, NULL, NULL),
-(36, 'Multiverse', 0, 0, 0, 30000, NULL, NULL),
-(37, 'CLAVOTEAM', 0, 0, 0, 30000, NULL, NULL),
-(38, 'Snorlax', 0, 0, 0, 30000, NULL, NULL),
-(39, 'CLAVERS', 0, 0, 0, 30000, NULL, NULL);
+(8, 'Affandra', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(9, 'Spill The Three', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(10, 'Beauty and Brain', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(11, 'Tim AJA', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(12, 'Tim Pehh', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(13, 'Tim Cheese', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(14, 'Tim Edu', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(15, 'Vander', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(16, 'Twinkle Triad', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(17, 'Paseo', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(18, 'Telor Sakti', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(19, 'Telor Dadar', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(20, 'Business Proposal 3.0', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(21, 'Anak DKV nyasar', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(22, 'Sinlucky', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(23, 'CHEERS', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(24, 'KARUNGGONI', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(25, 'HOKAY', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(26, 'Klein and Friends', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(27, 'Free Willy', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(28, 'JCA Glory', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(29, 'SMH', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(30, 'Clavenfore', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(31, 'Smala', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(32, 'Macgyver', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(33, 'All in Charizz', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(34, 'CLAVE', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(35, 'DURIAN MUSANGKING', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(36, 'Multiverse', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(37, 'CLAVOTEAM', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(38, 'Snorlax', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(39, 'CLAVERS', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(40, 'Tim Pehh', 0, 0, 0, 30000, NULL, '2023-09-08 02:11:51');
 
 -- --------------------------------------------------------
 
@@ -534,7 +535,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `created_at`,
 (36, 'Multiverse', 'multiverse', '$2a$10$Kq3z198Qy.onxp2nreIJ1.Jr9qeNFpZln5LX/I9RHUiyZhxxxj2L2', 5, NULL, NULL),
 (37, 'CLAVOTEAM', 'clavoteam', '$2a$10$qy5H9duX7Yq1jUeLeor.1e.lm70XI0UTbRMs/YFRhYAfYQaqisTmG', 5, NULL, NULL),
 (38, 'Snorlax', 'snorlax', '$2a$10$XAoJU3R2eHO.5y/Q5L2qxOiBdubz/b4CX5cOxoype9I1aP1SK5WsK', 5, NULL, NULL),
-(39, 'CLAVERS', 'clavers', '$2a$10$mliSJfVprptVFqxvhb0MUugllYYWGKnd3FuzIBBirDeE8qmR774Z2', 5, NULL, NULL);
+(39, 'CLAVERS', 'clavers', '$2a$10$mliSJfVprptVFqxvhb0MUugllYYWGKnd3FuzIBBirDeE8qmR774Z2', 5, NULL, NULL),
+(40, 'Tim Pehh', 'timpehh', '$2a$10$EBw3nOTobaGiadiYSOkKR./Y4rbkCqZJDHVhVQ/K2Rx4202RdvIgG', 5, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -651,7 +653,7 @@ ALTER TABLE `buys`
 -- AUTO_INCREMENT untuk tabel `buy_transactions`
 --
 ALTER TABLE `buy_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `expeditions`
@@ -669,7 +671,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `items`
@@ -693,7 +695,7 @@ ALTER TABLE `sells`
 -- AUTO_INCREMENT untuk tabel `sell_transactions`
 --
 ALTER TABLE `sell_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `sessions`
@@ -711,13 +713,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT untuk tabel `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

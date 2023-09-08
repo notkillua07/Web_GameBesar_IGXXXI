@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped mt-1" id="table-pen">
+                <table class="table table-striped mt-1">
                     <thead>
                         <tr>
                             <th scope="col">No.</th>
@@ -62,6 +62,8 @@
                             <th scope="col">Kapasitas Terisi</th>
                         </tr>
                     </thead>
+                    <tbody id="table-pen">
+                    </tbody>
                 </table>
 
             </div>
@@ -154,6 +156,8 @@
         const getTeam = () => {
 
             let teamName = $('#team').val();
+            var table = document.getElementById("table-pen");
+            table.innerHTML = "";
             $.ajax({
                 type: 'POST',
                 url: '{{ route('admin.getTeam') }}',
@@ -164,7 +168,7 @@
                 success: function(data) {
                     $('#koin').text(data.team.currency);
                     $('#demand').text(data.team.demand_fulfilled);
-                    var table = document.getElementById("table-pen");
+                    
                     if (data.arrOfBT.length != 0) {
                         for (let i = 0; i < data.arrOfBT.length; i++) {
                             let content = ""
@@ -231,9 +235,12 @@
                                     minutes = "0" + minutes;
                                 }
                                 content += "<td> " + minutes + ":" +
-                                    seconds " </td> <td>Dalam Pengiriman</td>";
+                                    seconds +" </td> <td>Dalam Pengiriman</td>";
                             }
                             content+="<td> "+data.arrOfBT[i].cap_left+" </td>";
+                            table.innerHTML += "<tr>";
+                            table.innerHTML += content;
+                            table.innerHTML += "</tr>";
                         }
                     }
                 },
