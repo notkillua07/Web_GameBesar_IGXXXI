@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <head>
     <title>IGXXXI - Penpos Penjualan</title>
 </head>
@@ -52,10 +53,12 @@
                 </div>
 
                 {{-- Button Submit --}}
-                <button type="button" class="btn btn-primary" onclick="sellInv()"><i class="bi bi-check-square-fill"></i> Konfirmasi</button>
+                <button type="button" class="btn btn-primary" onclick="sellInv()"><i class="bi bi-check-square-fill"></i>
+                    Konfirmasi</button>
 
-                 {{-- Button Distribusi --}}
-                 <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
+                {{-- Button Distribusi --}}
+                <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke
+                    Distribusi</a>
 
             </div>
         </div>

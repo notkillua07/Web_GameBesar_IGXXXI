@@ -73,6 +73,9 @@
                     </div>
                 </div>
 
+                {{-- Button Distribusi --}}
+                <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
+
             </div>
         </div>
     </div>
@@ -174,7 +177,7 @@
                     'amount': amount,
                 },
                 success: function(data) {
-                    console.log(data.msg)
+                    changeTeam();
                     alert(data.msg);
                 },
                 error: function(data) {

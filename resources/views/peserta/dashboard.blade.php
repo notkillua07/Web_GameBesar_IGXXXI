@@ -136,8 +136,15 @@ $t = time();
                                                         $seconds = 'Dijual';
                                                         $valid = false;
                                                     } else {
+                                                        $seconds = strtotime($arrOfBT[$i]->arrived_at) - $t;
                                                         $minutes = floor($seconds / 60);
                                                         $seconds = $seconds % 60;
+                                                        if($minutes <10){
+                                                            $minutes = "0$minutes";
+                                                        }
+                                                        if($seconds<10){
+                                                            $seconds = "0$seconds";
+                                                        }
                                                     }
                                                     if ($valid) {
                                                         echo "$minutes:$seconds";
@@ -157,21 +164,4 @@ $t = time();
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-        });
-
-        $('#submit').click(function() {
-            $('#submit').attr('disabled', 'disabled');
-            $('#submit').addClass('btn-submit-disabled');
-            setTimeout(function() {
-                $('#submit').removeAttr('disabled');
-                $('#submit').removeClass('btn-submit-disabled');
-            }, 2000);
-        });
-    </script>
 @endsection

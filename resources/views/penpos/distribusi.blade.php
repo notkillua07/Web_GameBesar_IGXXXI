@@ -103,12 +103,16 @@
             <div class="row mt-5 justify-content-center">
 
                 {{-- Button Submit --}}
-                <button type="button" class="btn btn-primary mb-2" onclick="sendMuatan()" style="width: 20em"><i
-                        class="bi bi-send-fill"></i> Kirim</button>
+                <button type="button" class="btn btn-primary mb-2" onclick="sendMuatan()" style="width: 20em" id="submit"><i
+                        class="bi bi-send-fill"></i> Kirim</button><br>
 
                 {{-- Button Penjualan --}}
                 <a href="{{ __('/penjualan') }}" class="btn btn-info" role="button" style="width: 20em"><i
-                        class="bi bi-signpost-fill"></i> Ke Penjualan</a>
+                        class="bi bi-signpost-fill"></i> Ke Penjualan</a><br>
+
+                {{-- Button Pembelian --}}
+                <a href="{{ __('/pembelian') }}" class="btn btn-info" role="button" style="width: 20em"><i
+                        class="bi bi-signpost-fill"></i> Ke Pembelian</a><br>
             </div>
         </div>
     </div>

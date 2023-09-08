@@ -28,6 +28,18 @@ class AdminController extends Controller
     public function index()
     {
         $teams = Team::all();
+        date_default_timezone_set('Asia/Jakarta');
+        $t = time();
+        $bts = BuyTransaction::where('status', 'sending')->get();
+        $msg = "Failed";
+        foreach ($bts as $bt) {
+            $seconds = $t - strtotime($bt->arrived_at);
+            if ($seconds >= 0) {
+                $bt->status = "arrived";
+                $bt->save();
+            }
+            $msg = "Success";
+        }
         return view('penpos.admin', compact('teams'));
     }
 
@@ -39,18 +51,20 @@ class AdminController extends Controller
         $teamName = str_replace("+", " ", $teamName);
         $tim = Team::where('name', $teamName)->first();
         $arrOfInv = Inventory::where('team_id', $tim->id)->get();
-        $arrOfBT = [];
+        $arrOfBT = array();
         foreach ($arrOfInv as $inv) {
             $bts = BuyTransaction::where('inv_id', $inv->id)->get();
-            foreach ($bts as $bt) {
-                $seconds = $t - strtotime($bt->arrived_at);
-                if ($seconds >= 0) {
-                    if ($bt->status == "sending") {
-                        $bt->status = "arrived";
-                        $bt->save();
+            if($bts != null){
+                foreach ($bts as $bt) {
+                    $seconds = $t - strtotime($bt->arrived_at);
+                    if ($seconds >= 0) {
+                        if ($bt->status == "sending") {
+                            $bt->status = "arrived";
+                            $bt->save();
+                        }
                     }
+                    array_push($arrOfBT, $bt);
                 }
-                array_push($arrOfBT, $bt);
             }
         }
         return response()->json(array(
@@ -81,9 +95,10 @@ class AdminController extends Controller
     public function inflation()
     {
         $teams = Team::all();
-        $msg ="Inflation Failed";
-        foreach($teams as $team){
+        $msg = "Inflation Failed";
+        foreach ($teams as $team) {
             $team->currency = $team->currency * 0.6;
+            $team->save();
             $msg = "Inflation success";
         }
         return response()->json(array(
@@ -95,7 +110,9 @@ class AdminController extends Controller
     {
         $session = DB::table('sessions')->first();
         $session->month += 1;
-        $session->save();
+        DB::table('sessions')
+            ->where('id', $session->id)
+            ->update(['month' => $session->month]);
         $msg = "Sekarang bulan ke-$session->month";
         return response()->json(array(
             'msg' => $msg,

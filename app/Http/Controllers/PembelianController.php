@@ -65,38 +65,41 @@ class PembelianController extends Controller
         $city = Supplier::where('city', $cityName)->first();
         $sell = Sell::where('item_id', $item->id)->where('supplier_id', $city->id)->first();
         $price = $amount * ($sell->price);
-        if ($sell->stocks > 0) {
-            if ($teamCurr >= $price) {
-                $sell->stocks -= $amount;
-                $team->currency -= $price;
-                $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->get();
-                if(count($invSearch) < 1){
-                    DB::table('inventories')->insert([
-                        'team_id' => $team->id,
-                        'item_id' => $item->id,
-                        'amount' => $amount,
-                    ]);
-                    $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->first();
-                    DB::table('sell_transactions')->insert([
-                        'inv_id' => $invSearch->id,
-                        'sell_id' => $sell->id,
-                        'amount' => $amount,
-                    ]);
-                }else{
-                    $invSearch[0]->amount += $amount;
-                    $invSearch[0]->save();
+        if($amount != 0){
+            if ($sell->stocks > 0) {
+                if ($teamCurr >= $price) {
+                    $sell->stocks -= $amount;
+                    $team->currency -= $price;
+                    $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->get();
+                    if(count($invSearch) < 1){
+                        DB::table('inventories')->insert([
+                            'team_id' => $team->id,
+                            'item_id' => $item->id,
+                            'amount' => $amount,
+                        ]);
+                        $invSearch = Inventory::where('team_id',$team->id)->where('item_id',$item->id)->first();
+                        DB::table('sell_transactions')->insert([
+                            'inv_id' => $invSearch->id,
+                            'sell_id' => $sell->id,
+                            'amount' => $amount,
+                        ]);
+                    }else{
+                        $invSearch[0]->amount += $amount;
+                        $invSearch[0]->save();
+                    }
+                    $sell->save();
+                    $team->save();
+                    $msg = "Successfully bought!";
                 }
-                $sell->save();
-                $team->save();
-                $msg = "Successfully bought!";
-            }
-            else{
-                $msg = "Team's Currency not enough!";
+                else{
+                    $msg = "Team's Currency not enough!";
+                }
+            }else{
+                $msg = "The Supplier is out of stock!";
             }
         }else{
-            $msg = "The Supplier is out of stock!";
+            $msg = "Please input an amount more than 0";
         }
-
         return response()->json(array(
             'msg' => $msg
         ), 200);
