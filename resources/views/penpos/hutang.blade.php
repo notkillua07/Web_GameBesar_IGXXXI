@@ -68,7 +68,7 @@
         const inputHutang = () => {
             let teamName = $('#team').val();
 
-            const hutang = $('#totalRight').val() * 200;
+            const hutang = $('#totalRight').val() * 2000 + 2000;
             console.log(teamName, hutang);
             $.ajax({
                 type: 'POST',
