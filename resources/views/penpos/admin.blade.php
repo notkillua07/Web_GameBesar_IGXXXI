@@ -37,16 +37,16 @@
                             <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-calculator"></i> Hutang</h1>
                         </div>
                         <div class="col-sm pe-3 border-end border-2 border-white pt-2">
-                            <h1 class="text-end pe-2 ps-2" id="koin"
+                            <h1 class="text-end pe-2 ps-2" id="hutang"
                                 style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
-                                30000
+                                0
                             </h1>
                         </div>
                         <div class="col-auto ps-3 pt-2">
                             <h1 class="text-left" style="color:#ffffff;"><i class="bi bi-coin"></i> Total Dana</h1>
                         </div>
                         <div class="col-sm pe-3 pt-2 border-end border-2 border-white">
-                            <h1 class="text-end pe-2 ps-2" id="hutang"
+                            <h1 class="text-end pe-2 ps-2" id="koin"
                                 style="color:#2C56A7; background-color:#C3E2F6; border-radius: 20px;">
                                 0
                             </h1>
