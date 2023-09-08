@@ -70,15 +70,16 @@ class PenjualanController extends Controller
             $t = time();
             if (strtotime($bt->arrived_at) < $t) {
                 $profit = ($bt->amount * 100) * $buy->price;
-                $bt->demand_fulfilled = ($bt->amount) * 100;
+                $demand = ($bt->amount) * 100;
+                $bt->demand_fulfilled = $demand;
                 $team->currency += $profit;
-                $team->fulfill_demands += ($bt->amount) * 100;
-                $buy->demands -= ($bt->amount) * 100;
+                $team->fulfill_demands += $demand;
+                $buy->demands -= $demand;
                 $bt->status = "sold";
                 $buy->save();
                 $bt->save();
                 $team->save();
-                $msg = "Barang berhasil dijual! \nMendapatkan koin: $profit! \nTotal koin $team->name: $team->currency";
+                $msg = "Barang berhasil dijual! \nMendapatkan koin: $profit! \nTotal koin $team->name: $team->currency \nMendapatkan demand sebanyak: $demand! \nTotal Demand sekarang: $team->fulfill_demands";
             } else {
                 $msg = "Barang belum sampai!";
             }
