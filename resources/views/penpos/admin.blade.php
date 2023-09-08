@@ -167,86 +167,56 @@
                     var table = document.getElementById("table-pen");
                     if (data.arrOfBT.length != 0) {
                         for (let i = 0; i < data.arrOfBT.length; i++) {
-                            var row = table.InsertRow();
-
-                            var cell1 = row.insertCell(0);
-                            var cell2 = row.insertCell(1);
-                            var cell3 = row.insertCell(2);
-                            var cell4 = row.insertCell(3);
-                            var cell5 = row.insertCell(4);
-                            var cell6 = row.insertCell(5);
-
-                            cell1.innerHTML = (i + 1)
+                            let content = ""
+                            content += "<td>" + (i + 1) + "</td>"
                             if (data.arrOfBT[i].expedition_id == '1') {
-                                cell2.innerHTML = 'Cargo'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> Cargo </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '2') {
-                                cell2.innerHTML = 'Cargo'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> Cargo </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '3') {
-                                cell2.innerHTML = 'Cargo'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> Cargo </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '4') {
-                                cell2.innerHTML = 'Si Fast - Darat'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> Si Fast - Darat </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '5') {
-                                cell2.innerHTML = 'Si Fast - Darat'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> Si Fast - Darat </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '6') {
-                                cell2.innerHTML = 'Si Fast - Darat'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> Si Fast - Darat </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '7') {
-                                cell2.innerHTML = 'Si Fast - Laut'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> Si Fast - Laut </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '8') {
-                                cell2.innerHTML = 'Si Fast - Laut'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> Si Fast - Laut </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '9') {
-                                cell2.innerHTML = 'Si Fast - Laut'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> Si Fast - Laut </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '10') {
-                                cell2.innerHTML = 'Jalur Kurir - Darat'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> Jalur Kurir - Darat </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '11') {
-                                cell2.innerHTML = 'Jalur Kurir - Darat'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> Jalur Kurir - Darat </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '12') {
-                                cell2.innerHTML = 'Jalur Kurir - Darat'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> Jalur Kurir - Darat </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '13') {
-                                cell2.innerHTML = 'Jalur Kurir - Laut'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> Jalur Kurir - Laut </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '14') {
-                                cell2.innerHTML = 'Jalur Kurir - Laut'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> Jalur Kurir - Laut </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '15') {
-                                cell2.innerHTML = 'Jalur Kurir - Laut'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> Jalur Kurir - Laut </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '16') {
-                                cell2.innerHTML = 'JNA - Darat'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> JNA - Darat </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '17') {
-                                cell2.innerHTML = 'JNA - Darat'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> JNA - Darat </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '18') {
-                                cell2.innerHTML = 'JNA - Darat'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> JNA - Darat </td> <td>Bandung</td>";
                             } else if (data.arrOfBT[i].expedition_id == '19') {
-                                cell2.innerHTML = 'JNA - Laut'
-                                cell3.innerHTML = 'Surabaya'
+                                content += "<td> JNA - Laut </td> <td>Surabaya</td>";
                             } else if (data.arrOfBT[i].expedition_id == '20') {
-                                cell2.innerHTML = 'JNA - Laut'
-                                cell3.innerHTML = 'Semarang'
+                                content += "<td> JNA - Laut </td> <td>Semarang</td>";
                             } else if (data.arrOfBT[i].expedition_id == '21') {
-                                cell2.innerHTML = 'JNA - Laut'
-                                cell3.innerHTML = 'Bandung'
+                                content += "<td> JNA - Laut </td> <td>Bandung</td>";
                             }
+
                             if (data.arrOfBT[i].status == 'arrived') {
-                                cell4.innerHTML = '00:00'
-                                cell5.innerHTML = 'Sudah Sampai'
+                                content += "<td> 00:00 </td> <td>Sudah Sampai</td>";
                             } else if (data.arrOfBT[i].status == 'sold') {
-                                cell4.innerHTML = '00:00'
-                                cell5.innerHTML = 'Sudah Dijual'
+                                content += "<td> 00:00 </td> <td>Sudah Dijual</td>";
                             } else if (data.arrOfBT[i].status == 'sending') {
                                 var dtString = data.arrOfBT[i].arrived_at;
                                 var curTime = new Date();
@@ -260,10 +230,10 @@
                                 if (minutes < 10) {
                                     minutes = "0" + minutes;
                                 }
-                                cell4.innerHTML = seconds + ":" + minutes;
-                                cell5.innerHTML = 'Dalam Pengiriman';
+                                content += "<td> " + minutes + ":" +
+                                    seconds " </td> <td>Dalam Pengiriman</td>";
                             }
-                            cell6.innerHTML(data.arrOfBT[i].cap_left)
+                            content+="<td> "+data.arrOfBT[i].cap_left+" </td>";
                         }
                     }
                 },
