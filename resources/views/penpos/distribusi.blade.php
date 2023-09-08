@@ -31,7 +31,7 @@
                     <div class="col-md-6">
                         <div class="form-outline">
                             <label class="form-label" for="kotaTujuan"><i class="bi bi-building"></i> Kota
-                                Tujuan</label><br>
+                                Asal</label><br>
                             <select name="kotaTujuan" id="kotaTujuan" class="form-select select2 mb-3"
                                 onchange="getTeamInv()" required>
                                 <option value="-" selected disabled>- Pilih Kota Asal -</option>
