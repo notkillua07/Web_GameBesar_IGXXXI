@@ -72,6 +72,7 @@ class PenjualanController extends Controller
                 $profit = ($bt->amount * 100) * $buy->price;
                 $bt->demand_fulfilled = ($bt->amount) * 100;
                 $team->currency += $profit;
+                $team->fulfill_demands += ($bt->amount) * 100;
                 $buy->demands -= ($bt->amount) * 100;
                 $bt->status = "sold";
                 $buy->save();
