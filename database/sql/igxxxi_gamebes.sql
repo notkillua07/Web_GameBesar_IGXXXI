@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Sep 2023 pada 07.30
+-- Waktu pembuatan: 08 Sep 2023 pada 17.36
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -43,87 +43,87 @@ CREATE TABLE `buys` (
 --
 
 INSERT INTO `buys` (`id`, `item_id`, `supplier_id`, `price`, `month`, `demands`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 47, 1, 50000, NULL, '2023-09-07 12:07:37'),
-(2, 2, 1, 45, 1, 50000, NULL, NULL),
-(3, 3, 1, 61.18, 1, 50000, NULL, NULL),
-(4, 1, 1, 68.6, 2, 50000, NULL, NULL),
-(5, 2, 1, 45, 2, 50000, NULL, NULL),
-(6, 3, 1, 41, 2, 50000, NULL, NULL),
-(7, 1, 1, 47, 3, 50000, NULL, '2023-09-08 02:10:30'),
-(8, 2, 1, 68.6, 3, 50000, NULL, NULL),
-(9, 3, 1, 41, 3, 50000, NULL, NULL),
-(10, 4, 1, 42, 1, 50000, NULL, NULL),
-(11, 5, 1, 63.5, 1, 50000, NULL, NULL),
-(12, 6, 1, 48, 1, 50000, NULL, NULL),
-(13, 4, 1, 42, 2, 50000, NULL, NULL),
-(14, 5, 1, 46, 2, 50000, NULL, NULL),
-(15, 6, 1, 62.22, 2, 50000, NULL, NULL),
-(16, 4, 1, 58.5, 3, 50000, NULL, NULL),
-(17, 5, 1, 46, 3, 50000, NULL, NULL),
-(18, 6, 1, 48, 3, 50000, NULL, NULL),
-(19, 7, 1, 51, 1, 50000, NULL, NULL),
-(20, 8, 1, 60.42, 1, 50000, NULL, NULL),
-(21, 9, 1, 50, 1, 50000, NULL, NULL),
-(22, 7, 1, 51, 2, 50000, NULL, NULL),
-(23, 8, 1, 49, 2, 50000, NULL, NULL),
-(24, 9, 1, 61.6, 2, 50000, NULL, NULL),
-(25, 7, 1, 63.72, 3, 50000, NULL, NULL),
-(26, 8, 1, 49, 3, 50000, NULL, NULL),
-(27, 9, 1, 50, 3, 50000, NULL, NULL),
-(28, 10, 2, 30, 1, 50000, NULL, NULL),
-(29, 11, 2, 32, 1, 50000, NULL, NULL),
-(30, 12, 2, 45, 1, 50000, NULL, '2023-09-04 12:44:14'),
-(31, 10, 2, 49.6, 2, 50000, NULL, NULL),
-(32, 11, 2, 32, 2, 50000, NULL, NULL),
-(33, 12, 2, 29, 2, 50000, NULL, NULL),
-(34, 10, 2, 30, 3, 50000, NULL, NULL),
-(35, 11, 2, 53.55, 3, 50000, NULL, NULL),
-(36, 12, 2, 29, 3, 50000, NULL, NULL),
-(37, 13, 2, 27, 1, 50000, NULL, NULL),
-(38, 14, 2, 24, 1, 50000, NULL, NULL),
-(39, 15, 2, 44.28, 1, 50000, NULL, NULL),
-(40, 13, 2, 40.6, 2, 50000, NULL, NULL),
-(41, 14, 2, 24, 2, 50000, NULL, NULL),
-(42, 15, 2, 25, 2, 50000, NULL, NULL),
-(43, 13, 2, 27, 3, 50000, NULL, NULL),
-(44, 14, 2, 41.25, 3, 50000, NULL, NULL),
-(45, 15, 2, 25, 3, 50000, NULL, NULL),
-(46, 16, 2, 32, 1, 50000, NULL, NULL),
-(47, 17, 2, 57.6, 1, 50000, NULL, NULL),
-(48, 18, 2, 25, 1, 50000, NULL, NULL),
-(49, 16, 2, 32, 2, 50000, NULL, NULL),
-(50, 17, 2, 33, 2, 50000, NULL, NULL),
-(51, 18, 2, 41.08, 2, 50000, NULL, NULL),
-(52, 16, 2, 55.3, 3, 50000, NULL, NULL),
-(53, 17, 2, 33, 3, 50000, NULL, NULL),
-(54, 18, 2, 25, 3, 50000, NULL, NULL),
-(55, 19, 3, 17, 1, 50000, NULL, NULL),
-(56, 20, 3, 14, 1, 50000, NULL, NULL),
-(57, 21, 3, 24.44, 1, 50000, NULL, NULL),
-(58, 19, 3, 26.64, 2, 50000, NULL, NULL),
-(59, 20, 3, 14, 2, 50000, NULL, NULL),
-(60, 21, 3, 12, 2, 50000, NULL, NULL),
-(61, 19, 3, 17, 3, 50000, NULL, NULL),
-(62, 20, 3, 26.25, 3, 50000, NULL, NULL),
-(63, 21, 3, 12, 3, 50000, NULL, NULL),
-(64, 22, 3, 11, 1, 50000, NULL, NULL),
-(65, 23, 3, 28.56, 1, 50000, NULL, NULL),
-(66, 24, 3, 17, 1, 50000, NULL, NULL),
-(67, 22, 3, 11, 2, 50000, NULL, NULL),
-(68, 23, 3, 16, 2, 50000, NULL, NULL),
-(69, 24, 3, 32.04, 2, 50000, NULL, NULL),
-(70, 22, 3, 23.76, 3, 50000, NULL, NULL),
-(71, 23, 3, 16, 3, 50000, NULL, NULL),
-(72, 24, 3, 17, 3, 50000, NULL, NULL),
-(73, 25, 3, 17, 1, 50000, NULL, NULL),
-(74, 26, 3, 19, 1, 50000, NULL, NULL),
-(75, 27, 3, 27, 1, 50000, NULL, NULL),
-(76, 25, 3, 29.7, 2, 50000, NULL, NULL),
-(77, 26, 3, 19, 2, 50000, NULL, NULL),
-(78, 27, 3, 17, 2, 50000, NULL, NULL),
-(79, 25, 3, 17, 3, 50000, NULL, NULL),
-(80, 26, 3, 33.6, 3, 50000, NULL, NULL),
-(81, 27, 3, 17, 3, 50000, NULL, NULL);
+(1, 1, 1, 96, 1, 50000, NULL, '2023-09-07 12:07:37'),
+(2, 2, 1, 92, 1, 50000, NULL, NULL),
+(3, 3, 1, 107.18, 1, 50000, NULL, NULL),
+(4, 1, 1, 117.6, 2, 50000, NULL, NULL),
+(5, 2, 1, 94, 2, 50000, NULL, NULL),
+(6, 3, 1, 90, 2, 50000, NULL, NULL),
+(7, 1, 1, 96, 3, 50000, NULL, '2023-09-08 02:10:30'),
+(8, 2, 1, 117.6, 3, 50000, NULL, NULL),
+(9, 3, 1, 90, 3, 50000, NULL, NULL),
+(10, 4, 1, 87, 1, 50000, NULL, NULL),
+(11, 5, 1, 113.5, 1, 50000, NULL, NULL),
+(12, 6, 1, 99, 1, 50000, NULL, NULL),
+(13, 4, 1, 91, 2, 50000, NULL, NULL),
+(14, 5, 1, 95, 2, 50000, NULL, NULL),
+(15, 6, 1, 111.22, 2, 50000, NULL, NULL),
+(16, 4, 1, 107.5, 3, 50000, NULL, NULL),
+(17, 5, 1, 95, 3, 50000, NULL, NULL),
+(18, 6, 1, 97, 3, 50000, NULL, NULL),
+(19, 7, 1, 105, 1, 50000, NULL, NULL),
+(20, 8, 1, 113.42, 1, 50000, NULL, NULL),
+(21, 9, 1, 105, 1, 50000, NULL, NULL),
+(22, 7, 1, 100, 2, 50000, NULL, NULL),
+(23, 8, 1, 98, 2, 50000, NULL, NULL),
+(24, 9, 1, 110.6, 2, 50000, NULL, NULL),
+(25, 7, 1, 112.72, 3, 50000, NULL, NULL),
+(26, 8, 1, 98, 3, 50000, NULL, NULL),
+(27, 9, 1, 99, 3, 50000, NULL, NULL),
+(28, 10, 2, 62, 1, 50000, NULL, NULL),
+(29, 11, 2, 64, 1, 50000, NULL, NULL),
+(30, 12, 2, 77, 1, 50000, NULL, '2023-09-04 12:44:14'),
+(31, 10, 2, 81.6, 2, 50000, NULL, NULL),
+(32, 11, 2, 64, 2, 50000, NULL, NULL),
+(33, 12, 2, 61, 2, 50000, NULL, NULL),
+(34, 10, 2, 62, 3, 50000, NULL, NULL),
+(35, 11, 2, 85.55, 3, 50000, NULL, NULL),
+(36, 12, 2, 61, 3, 50000, NULL, NULL),
+(37, 13, 2, 59, 1, 50000, NULL, NULL),
+(38, 14, 2, 56, 1, 50000, NULL, NULL),
+(39, 15, 2, 76.28, 1, 50000, NULL, NULL),
+(40, 13, 2, 72.6, 2, 50000, NULL, NULL),
+(41, 14, 2, 56, 2, 50000, NULL, NULL),
+(42, 15, 2, 57, 2, 50000, NULL, NULL),
+(43, 13, 2, 59, 3, 50000, NULL, NULL),
+(44, 14, 2, 73.25, 3, 50000, NULL, NULL),
+(45, 15, 2, 57, 3, 50000, NULL, NULL),
+(46, 16, 2, 64, 1, 50000, NULL, NULL),
+(47, 17, 2, 89.6, 1, 50000, NULL, NULL),
+(48, 18, 2, 57, 1, 50000, NULL, NULL),
+(49, 16, 2, 64, 2, 50000, NULL, NULL),
+(50, 17, 2, 65, 2, 50000, NULL, NULL),
+(51, 18, 2, 73.08, 2, 50000, NULL, NULL),
+(52, 16, 2, 87.3, 3, 50000, NULL, NULL),
+(53, 17, 2, 65, 3, 50000, NULL, NULL),
+(54, 18, 2, 57, 3, 50000, NULL, NULL),
+(55, 19, 3, 35, 1, 50000, NULL, NULL),
+(56, 20, 3, 32, 1, 50000, NULL, NULL),
+(57, 21, 3, 42.44, 1, 50000, NULL, NULL),
+(58, 19, 3, 44.64, 2, 50000, NULL, NULL),
+(59, 20, 3, 32, 2, 50000, NULL, NULL),
+(60, 21, 3, 30, 2, 50000, NULL, NULL),
+(61, 19, 3, 35, 3, 50000, NULL, NULL),
+(62, 20, 3, 44.25, 3, 50000, NULL, NULL),
+(63, 21, 3, 30, 3, 50000, NULL, NULL),
+(64, 22, 3, 29, 1, 50000, NULL, NULL),
+(65, 23, 3, 46.56, 1, 50000, NULL, NULL),
+(66, 24, 3, 35, 1, 50000, NULL, NULL),
+(67, 22, 3, 29, 2, 50000, NULL, NULL),
+(68, 23, 3, 34, 2, 50000, NULL, NULL),
+(69, 24, 3, 50.04, 2, 50000, NULL, NULL),
+(70, 22, 3, 41.76, 3, 50000, NULL, NULL),
+(71, 23, 3, 34, 3, 50000, NULL, NULL),
+(72, 24, 3, 35, 3, 50000, NULL, NULL),
+(73, 25, 3, 35, 1, 50000, NULL, NULL),
+(74, 26, 3, 37, 1, 50000, NULL, NULL),
+(75, 27, 3, 45, 1, 50000, NULL, NULL),
+(76, 25, 3, 47.7, 2, 50000, NULL, NULL),
+(77, 26, 3, 37, 2, 50000, NULL, NULL),
+(78, 27, 3, 35, 2, 50000, NULL, NULL),
+(79, 25, 3, 35, 3, 50000, NULL, NULL),
+(80, 26, 3, 51.6, 3, 50000, NULL, NULL),
+(81, 27, 3, 35, 3, 50000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,6 +224,13 @@ CREATE TABLE `inventories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `inventories`
+--
+
+INSERT INTO `inventories` (`id`, `team_id`, `item_id`, `amount`, `created_at`, `updated_at`) VALUES
+(13, 8, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -337,7 +344,7 @@ CREATE TABLE `sells` (
 --
 
 INSERT INTO `sells` (`id`, `item_id`, `supplier_id`, `price`, `stocks`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 49, 135000, NULL, '2023-09-07 19:00:26'),
+(1, 1, 1, 49, 135000, NULL, '2023-09-08 08:11:21'),
 (2, 2, 1, 47, 135000, NULL, NULL),
 (3, 3, 1, 46, 135000, NULL, '2023-09-07 19:11:22'),
 (4, 4, 1, 45, 135000, NULL, NULL),
@@ -444,7 +451,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `fulfill_demands`, `debt`, `indebted`, `currency`, `created_at`, `updated_at`) VALUES
-(8, 'Affandra', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
+(8, 'Affandra', 0, 0, 0, 30000, NULL, '2023-09-08 15:12:46'),
 (9, 'Spill The Three', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
 (10, 'Beauty and Brain', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
 (11, 'Tim AJA', 0, 0, 0, 30000, NULL, '2023-09-07 17:58:13'),
@@ -536,7 +543,15 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `created_at`,
 (37, 'CLAVOTEAM', 'clavoteam', '$2a$10$qy5H9duX7Yq1jUeLeor.1e.lm70XI0UTbRMs/YFRhYAfYQaqisTmG', 5, NULL, NULL),
 (38, 'Snorlax', 'snorlax', '$2a$10$XAoJU3R2eHO.5y/Q5L2qxOiBdubz/b4CX5cOxoype9I1aP1SK5WsK', 5, NULL, NULL),
 (39, 'CLAVERS', 'clavers', '$2a$10$mliSJfVprptVFqxvhb0MUugllYYWGKnd3FuzIBBirDeE8qmR774Z2', 5, NULL, NULL),
-(40, 'Tim Pehh', 'timpehh', '$2a$10$EBw3nOTobaGiadiYSOkKR./Y4rbkCqZJDHVhVQ/K2Rx4202RdvIgG', 5, NULL, NULL);
+(40, 'Tim Pehh', 'timpehh', '$2a$10$EBw3nOTobaGiadiYSOkKR./Y4rbkCqZJDHVhVQ/K2Rx4202RdvIgG', 5, NULL, NULL),
+(41, 'Penjualan 1', 'penjualan1', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
+(42, 'Penjualan 2', 'penjualan2', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
+(43, 'Penjualan 3', 'penjualan3', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
+(44, 'Penjualan 4', 'penjualan4', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 4, NULL, NULL),
+(45, 'Pembelian 1', 'pembelian1', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(46, 'Pembelian 2', 'pembelian2', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(47, 'Pembelian 3', 'pembelian3', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL),
+(48, 'Pembelian 4', 'pembelian4', '$2a$10$3.Rf2zlOsIqokNIyeIWaeeQaIBmeODslGFTGF.NomhAWCxveeg0AK', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -653,7 +668,7 @@ ALTER TABLE `buys`
 -- AUTO_INCREMENT untuk tabel `buy_transactions`
 --
 ALTER TABLE `buy_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `expeditions`
@@ -671,7 +686,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `items`
@@ -695,7 +710,7 @@ ALTER TABLE `sells`
 -- AUTO_INCREMENT untuk tabel `sell_transactions`
 --
 ALTER TABLE `sell_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `sessions`
@@ -719,7 +734,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
