@@ -107,7 +107,7 @@
                         class="bi bi-send-fill"></i> Kirim</button><br>
 
                 {{-- Button Penjualan --}}
-                <a href="{{ __('/penjualan') }}" class="btn btn-info" role="button" style="width: 20em"><i
+                <a href="{{ __('/penjualan') }}" class="btn btn-info mb-2" role="button" style="width: 20em"><i
                         class="bi bi-signpost-fill"></i> Ke Penjualan</a><br>
 
                 {{-- Button Pembelian --}}

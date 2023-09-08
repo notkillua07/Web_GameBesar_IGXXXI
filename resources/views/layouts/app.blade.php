@@ -83,7 +83,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown">
-                                {{-- Hai, {{$tim->name}}! --}}
+                                Hai, Selamat Datang!
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{ route('logout') }}"

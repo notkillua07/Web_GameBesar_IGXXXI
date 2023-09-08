@@ -1,13 +1,16 @@
 @extends('layouts.app')
+
 <head>
     <title>IGXXXI - Penpos Pembelian</title>
 </head>
 
 @section('content')
-    <div class="card m-auto mt-5 shadow" style="height:35em;width:30em;">
+    <div class="card mx-5 mt-5 shadow">
         <h1 class="card-header text-center" style="font-weight:bold;background-color:#7DC1E3;color:#ffffff;"><i
                 class="bi bi-cart4"></i></i> Pos Pembelian</h1>
+
         <div class="card-body">
+
             <div class="team-select-section">
 
                 {{-- Pilih Tim --}}
@@ -66,17 +69,25 @@
                     <input type="number" id="amount" class="form-control w-25" min="1" max="999" />
                 </div>
 
-                {{-- Button Submit --}}
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="button" class="btn btn-primary" id="submit" onclick="buySupply()"><i class="bi bi-check-square-fill"></i> Konfirmasi</button>
-                    </div>
-                </div>
-
-                {{-- Button Distribusi --}}
-                <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i class="bi bi-signpost-fill"></i> Ke Distribusi</a>
-
             </div>
+
+            {{-- Button Submit --}}
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary" id="submit" onclick="buySupply()"><i
+                            class="bi bi-check-square-fill"></i> Konfirmasi</button>
+                </div>
+            </div>
+
+            {{-- Button Distribusi --}}
+            <div class="row">
+                <div class="col-12 mb-3 text-center">
+                    <a href="{{ __('/distribusi') }}" class="btn btn-info" role="button"><i
+                            class="bi bi-signpost-fill"></i> Ke Distribusi</a>
+
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
