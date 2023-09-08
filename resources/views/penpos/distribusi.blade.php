@@ -82,7 +82,7 @@
             {{-- Input Muatan --}}
             <div class="col-12">
                 <div class="form-outline mb-3">
-                    <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Input Muatan</label>
+                    <label class="form-label" for="typeNumber"><i class="bi bi-info-square"></i> Input Muatan (kg)</label>
                     <input type="number" id="muatan" class="form-control w-25" min="1" max="999999">
                 </div>
             </div>
