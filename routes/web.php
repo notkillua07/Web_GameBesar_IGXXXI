@@ -19,12 +19,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
 
 Route::group(
     ['middleware' => ['auth', 'admin']],
     function () {
-        
+        Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
         Route::post('/admin-ganti', [App\Http\Controllers\AdminController::class, 'changeMonth'])->name('admin.bulan');
         Route::post('/admin-inf', [App\Http\Controllers\AdminController::class, 'inflation'])->name('admin.inflasi');
         Route::post('/admin-get', [App\Http\Controllers\AdminController::class, 'getTeam'])->name('admin.getTeam');
