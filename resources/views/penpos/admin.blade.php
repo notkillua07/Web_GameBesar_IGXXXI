@@ -233,7 +233,7 @@
                             } else if (data.arrOfBT[i].status == 'sold') {
                                 content += "<td>Sudah Dijual</td>";
                             } else if (data.arrOfBT[i].status == 'sending') {
-                                seconds + " </td> <td>Dalam Pengiriman</td>";
+                                content += " </td> <td>Dalam Pengiriman</td>";
                             }
                             content += "<td> " + data.arrOfBT[i].cap_left + " </td>";
                             table.innerHTML += "<tr>";
